@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
 {
-    public class SearchResultPage
+    public class SearchResultPage : BasePage
     {
         private WrapperWebElement SortDropdownMenu => new WrapperWebElement(By.XPath("//*[@class='sort-dropdwown-container']"));
         private WrapperWebElement FirstActiveProductThumbnailAddToBagButton => new WrapperWebElement(By.XPath("//*[@class='prod_thumbnail']//button[not(contains(@class,'disabled'))][.//*[text()='Add to bag']]"));

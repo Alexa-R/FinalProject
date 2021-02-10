@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
 {
-    public class HomePage
+    public class HomePage : BasePage
     {
         private WrapperWebElement FirstActiveRecommendProductThumbnailAddToBagButton => new WrapperWebElement(By.XPath("//*[contains(@class,'prod_thumbnail')]//button[not(contains(@class,'disabled'))][.//*[text()='Add to bag']]"));
 

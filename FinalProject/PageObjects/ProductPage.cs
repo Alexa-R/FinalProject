@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
 {
-    public class ProductPage
+    public class ProductPage : BasePage
     {
         private WrapperWebElement MainProductImage => new WrapperWebElement(By.XPath("//*[@id='cc_img__resize_wrapper-product-image-wi23000061']"));
         private WrapperWebElement WriteReviewButton => new WrapperWebElement(By.XPath("//*[contains(@aria-controls,'write-review')]"));

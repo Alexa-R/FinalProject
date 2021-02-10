@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
 {
-    public class CheckoutPage
+    public class CheckoutPage : BasePage
     {
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
