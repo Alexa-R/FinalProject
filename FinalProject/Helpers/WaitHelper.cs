@@ -39,5 +39,10 @@ namespace FinalProject.Helpers
         {
             GetExplicitWait(timeout, pollingInterval).Until(ExpectedConditions.ElementExists(@by));
         }
+
+        public static void WaitUntilInvisibilityOfElementWithText(By @by, string text, TimeSpan timeout = default, TimeSpan pollingInterval = default)
+        {
+            GetExplicitWait(timeout, pollingInterval).Until(ExpectedConditions.InvisibilityOfElementWithText(@by, text));
+        }
     }
 }

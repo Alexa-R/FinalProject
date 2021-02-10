@@ -35,7 +35,8 @@ namespace FinalProject.PageObjects
         private WrapperWebElement RecurringOrderCancelButton => new WrapperWebElement(By.XPath("//*[@id='recurring-order']//*[@data-dismiss='modal']"));
         private WrapperWebElement CartSummaryTotalItemsText => new WrapperWebElement(By.XPath("//*[@class='cart-summary__total-items-text']"));
         private WrapperWebElement CartSummaryTotalQuantityText => new WrapperWebElement(By.XPath("//*[@class='cart-summary__total-qty-text']"));
-        
+        private WrapperWebElement EstimatedTotalOrderSummaryValue => new WrapperWebElement(By.XPath("//*[@class='cart-summary__value-row'][.//*[text()='Estimated Total']]//g-price"));
+
         public void ClickPaymentMethodDropdownMenu()
         {
             PaymentMethodDropdownMenu.Click();
@@ -138,6 +139,7 @@ namespace FinalProject.PageObjects
 
         public bool IsOrderConfirmationContainerDisplayed()
         {
+            WaitHelper.WaitUntilElementIsDisplayed(OrderConfirmationContainer);
             return OrderConfirmationContainer.Displayed;
         }
 
@@ -234,6 +236,11 @@ namespace FinalProject.PageObjects
         public bool IsOrderSummaryValueDisplayed(string valueName)
         {
             return new WrapperWebElement(By.XPath($"//*[@class='cart-summary__value-row'][.//*[text()='{valueName}']]//g-price")).Displayed;
+        }
+
+        public void WaitUntilOrderSummarySectionIsLoaded()
+        {
+            WaitHelper.WaitUntilInvisibilityOfElementWithText(By.XPath("//*[@class='cart-summary__value-row'][.//*[text()='Estimated Total']]//g-price"), EstimatedTotalOrderSummaryValue.Text);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace FinalProject.TestCases.UserFlow
             AddToCartHelper.AddItemToCartFromHomePage();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
+            Pages.CheckoutPage.WaitUntilOrderSummarySectionIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.InvoiceNumber);
             Pages.CheckoutPage.EnterPoNumber("123456789");
@@ -30,6 +31,7 @@ namespace FinalProject.TestCases.UserFlow
             AddToCartHelper.AddItemToCartFromHomePage();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
+            Pages.CheckoutPage.WaitUntilOrderSummarySectionIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
