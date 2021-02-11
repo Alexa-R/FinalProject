@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.WrapperElement;
 using FinalProject.WrapperFactory;
@@ -74,11 +73,13 @@ namespace FinalProject.PageObjects
 
         public void ClickChangeShippingAddressLink()
         {
+            ChangeShippingAddressLink.WaitForElementIsDisplayed();
             ChangeShippingAddressLink.Click();
         }
 
         public void ClickAddNewAddressButton()
         {
+            AddNewAddressButton.WaitForElementIsDisplayed();
             AddNewAddressButton.Click();
         }
 
@@ -134,12 +135,12 @@ namespace FinalProject.PageObjects
 
         public void ClickChangeBillingAddressLink()
         {
+            ChangeBillingAddressLink.WaitForElementIsDisplayed();
             ChangeBillingAddressLink.Click();
         }
 
         public bool IsOrderConfirmationContainerDisplayed()
         {
-            WaitHelper.WaitUntilElementIsDisplayed(OrderConfirmationContainer);
             return OrderConfirmationContainer.Displayed;
         }
 
@@ -150,7 +151,6 @@ namespace FinalProject.PageObjects
 
         public bool IsRecurringOrderModalDisplayed()
         {
-            WaitHelper.WaitUntilElementIsDisplayed(RecurringOrderModal);
             return RecurringOrderModal.Displayed;
         }
 
@@ -240,7 +240,13 @@ namespace FinalProject.PageObjects
 
         public void WaitUntilOrderSummarySectionIsLoaded()
         {
-            WaitHelper.WaitUntilInvisibilityOfElementWithText(By.XPath("//*[@class='cart-summary__value-row'][.//*[text()='Estimated Total']]//g-price"), EstimatedTotalOrderSummaryValue.Text);
+            var estimatedTotalText = EstimatedTotalOrderSummaryValue.Text;
+            EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(estimatedTotalText);
+        }
+
+        public void ClickAddressRadioButton(string nickname)
+        {
+            new WrapperWebElement(By.XPath($"//*[@class='radiocheck_wrap'][.//*[text()='{nickname}']]//*[@class='fill']")).Click();
         }
     }
 }
