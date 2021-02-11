@@ -46,7 +46,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            CheckoutHelper.AddNewAddress();
+            CheckoutHelper.AddNewShippingAddress();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
