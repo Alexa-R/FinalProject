@@ -38,6 +38,7 @@ namespace FinalProject.PageObjects
 
         public void ClickPaymentMethodDropdownMenu()
         {
+            PaymentMethodDropdownMenu.WaitForElementIsDisplayed();
             PaymentMethodDropdownMenu.Click();
         }
 
@@ -69,6 +70,7 @@ namespace FinalProject.PageObjects
         public void ClickPlaceOrderButton()
         {
             PlaceOrderButton.Click();
+            WaitUntilPageIsLoaded();
         }
 
         public void ClickChangeShippingAddressLink()
@@ -131,6 +133,7 @@ namespace FinalProject.PageObjects
         public void ClickSaveButton()
         {
             SaveButton.Click();
+            WaitUntilPageIsLoaded();
         }
 
         public void ClickChangeBillingAddressLink()
@@ -141,6 +144,7 @@ namespace FinalProject.PageObjects
 
         public bool IsOrderConfirmationContainerDisplayed()
         {
+            OrderConfirmationContainer.WaitForElementIsDisplayed();
             return OrderConfirmationContainer.Displayed;
         }
 
