@@ -64,6 +64,7 @@ namespace FinalProject.PageObjects
 
         public void ClickBagButton()
         {
+            BagButton.WaitForElementIsDisplayed();
             BagButton.Click();
         }
 
@@ -79,6 +80,7 @@ namespace FinalProject.PageObjects
 
         public void ClickCheckoutButton()
         {
+            WaitUntilPageIsLoaded();
             CheckoutButton.Click();
         }
 
