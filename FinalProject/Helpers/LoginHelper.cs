@@ -18,7 +18,8 @@ namespace FinalProject.Helpers
             {
                 Pages.BasePage.ClickLoginButton();
             }
-            
+
+            Pages.BasePage.WaitUntilLoginPopupIsDisplayed();
             Pages.LoginPopup.EnterEmail(ConfigurationManager.AppSettings["Login"]);
             Pages.LoginPopup.EnterPassword(ConfigurationManager.AppSettings["Password"]);
             Pages.LoginPopup.ClickLoginButton();
