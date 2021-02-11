@@ -1,5 +1,4 @@
-﻿using FinalProject.Helpers;
-using FinalProject.WrapperElement;
+﻿using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
@@ -32,8 +31,8 @@ namespace FinalProject.PageObjects
         }
         
         public void WaitUntilThumbnailReload()
-        {
-           WaitHelper.WaitUntilElementStaleness(Thumbnail);
+        { 
+            Thumbnail.WaitForElementIsStale();
         }
     }
 }
