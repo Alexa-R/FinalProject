@@ -111,6 +111,7 @@
     <Compile Include="Helpers\AddToCartHelper.cs" />
     <Compile Include="Helpers\CheckoutHelper.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
+    <Compile Include="Helpers\RandomHelper.cs" />
     <Compile Include="Helpers\WaitHelper.cs" />
     <Compile Include="Lists\RecurringOrderLists.cs" />
     <Compile Include="PageObjects\BasePage.cs" />
