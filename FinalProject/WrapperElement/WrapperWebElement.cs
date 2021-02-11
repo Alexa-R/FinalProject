@@ -91,8 +91,7 @@ namespace FinalProject.WrapperElement
         
         public string GetProperty(string propertyName) => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.GetProperty(propertyName));
         
-        public string GetCssValue(string propertyName) => WaitHelper.GetExplicitWait()
-            .Until(d => WebElementImplementation.GetCssValue(propertyName));
+        public string GetCssValue(string propertyName) => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.GetCssValue(propertyName));
 
         public string TagName => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.TagName);
 
