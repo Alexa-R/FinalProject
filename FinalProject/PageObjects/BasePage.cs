@@ -32,6 +32,11 @@ namespace FinalProject.PageObjects
             return LanguagesDropdownMenu.Displayed;
         }
 
+        public void WaitUntilLoginPopupIsDisplayed()
+        {
+            LoginPopup.WaitForElementIsDisplayed();
+        }
+
         public void ClickUserMenuButton()
         {
             UserMenuButton.Click();
