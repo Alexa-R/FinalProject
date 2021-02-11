@@ -20,12 +20,17 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickViewBagButton();
             Pages.CartPage.ClickContinueToCheckout();
+            
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            CheckoutHelper.AddNewAddress();
+            CheckoutHelper.AddNewShippingAddress();
+            
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
-            CheckoutHelper.AddNewAddress();
+            CheckoutHelper.AddNewBillingAddress();
+            
+            Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
+            Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
         }
     }
 }
