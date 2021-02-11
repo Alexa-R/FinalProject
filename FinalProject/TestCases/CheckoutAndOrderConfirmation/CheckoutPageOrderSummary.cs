@@ -1,5 +1,4 @@
 ﻿using FinalProject.Constants;
-using FinalProject.Constants.ShopMenuConstants;
 using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.PageObjects;
@@ -14,16 +13,13 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
         public void VerifyOrderSummaryDisplayIsCorrect()
         {
             LoginHelper.LoginAsUser();
-            Pages.HomePage.WaitUntilHomePageIsLoaded();
-            Pages.BasePage.ClickShopMenuLink();
-            Pages.BasePage.ClickSubcategoryInShopMenu(ShopMenuCategoriesConstants.HairCare, ShopMenuHairCareSubcategories.Shampoos);
-            Pages.SearchResultPage.ClickFirstActiveProductThumbnailAddToBagButton();
+            AddToCartHelper.AddItemToCartFromHomePage();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            CheckoutHelper.AddNewAddress();
+            CheckoutHelper.AddNewShippingAddress();
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
-            CheckoutHelper.AddNewAddress();
+            CheckoutHelper.AddNewBillingAddress();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickShippingMethodDropdownMenu();
