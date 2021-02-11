@@ -15,6 +15,7 @@ namespace FinalProject.PageObjects
         private WrapperWebElement ViewBagButton => new WrapperWebElement(By.XPath("//*[@class='minicart-popup__links']//a[contains(@href,'cart')]"));
         private WrapperWebElement ShopMenuLink => new WrapperWebElement(By.XPath("//*[@id='headerBar']//a[text()='Shop']"));
         private WrapperWebElement SearchInputField => new WrapperWebElement(By.XPath("//input[@type='search']"));
+        private WrapperWebElement Spinner => new WrapperWebElement(By.XPath("//*[@id='cc-spinner']"));
 
         public void ClickLoginButton()
         {
@@ -43,14 +44,7 @@ namespace FinalProject.PageObjects
 
         public bool IsUserMenuButtonDisplayed()
         {
-            try
-            {
-                return UserMenuButton.Displayed;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            return UserMenuButton.Displayed;
         }
 
         public void ClickLinkInUserPopupMenu(string linkName)
@@ -102,6 +96,11 @@ namespace FinalProject.PageObjects
         {
             SearchInputField.SendKeys(item);
             SearchInputField.SendKeys(Keys.Enter);
+        }
+
+        public void WaitUntilPageIsLoaded()
+        {
+            Spinner.WaitForElementDisappear();
         }
     }
 }
