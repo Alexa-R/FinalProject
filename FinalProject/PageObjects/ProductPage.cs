@@ -1,5 +1,4 @@
-﻿using FinalProject.Helpers;
-using FinalProject.WrapperElement;
+﻿using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
@@ -21,7 +20,7 @@ namespace FinalProject.PageObjects
         
         public void WaitUntilProductImageIsDisplayed()
         {
-            WaitHelper.WaitUntilElementIsDisplayed(MainProductImage);
+            MainProductImage.WaitForElementIsDisplayed();
         }
 
         public void ClickWriteReviewButton()
@@ -51,6 +50,7 @@ namespace FinalProject.PageObjects
 
         public void EnterReviewUsername(string reviewUsername)
         {
+            ReviewUsernameInputField.WaitForElementIsDisplayed();
             ReviewUsernameInputField.SendKeys(reviewUsername);
         }
 
