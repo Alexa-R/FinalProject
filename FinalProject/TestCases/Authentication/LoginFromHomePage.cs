@@ -22,7 +22,8 @@ namespace FinalProject.TestCases.Authentication
         public void VerifyErrorMessageForInvalidEmailAddress()
         {
             var invalidEmail = "invalidEmail";
-            
+
+            Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.ClickUserMenuButton();
             Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
 
@@ -30,7 +31,8 @@ namespace FinalProject.TestCases.Authentication
             {
                 Pages.BasePage.ClickLoginButton();
             }
-            
+
+            Pages.BasePage.WaitUntilLoginPopupIsDisplayed();
             Pages.LoginPopup.EnterEmail(invalidEmail);
             Pages.LoginPopup.EnterPassword(ConfigurationManager.AppSettings["Password"]);
             Pages.LoginPopup.ClickLoginButton();
