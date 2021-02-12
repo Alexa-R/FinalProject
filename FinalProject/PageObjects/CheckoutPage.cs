@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.WrapperElement;
@@ -12,12 +13,6 @@ namespace FinalProject.PageObjects
 
         private static string companyName = "TestCompany";
         private static string phoneNumber = "1234567";
-        private static string firstAddress = "77 Massachusetts Avenue";
-        private static string countryValue = "US";
-        private static string stateValue = "MA";
-        private static string county = "Middlesex";
-        private static string city = "Cambridge";
-        private static string zipCode = "02139";
 
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
@@ -270,12 +265,12 @@ namespace FinalProject.PageObjects
             EnterNickname(nickname);
             EnterCompanyName(companyName);
             EnterPhoneNumber(phoneNumber);
-            EnterFirstAddress(firstAddress);
-            SelectCountryFromCountriesDropdownMenu(countryValue);
-            SelectStateFromStatesDropdownMenu(stateValue);
-            EnterCounty(county);
-            EnterCity(city);
-            EnterZipCode(zipCode);
+            EnterFirstAddress(ConfigurationManager.AppSettings["Address1"]);
+            SelectCountryFromCountriesDropdownMenu(ConfigurationManager.AppSettings["Country"]);
+            SelectStateFromStatesDropdownMenu(ConfigurationManager.AppSettings["State"]);
+            EnterCounty(ConfigurationManager.AppSettings["County"]);
+            EnterCity(ConfigurationManager.AppSettings["City"]);
+            EnterZipCode(ConfigurationManager.AppSettings["PostalCode"]);
             ClickSaveButton();
             ClickAddressRadioButton(nickname);
         }
@@ -287,12 +282,12 @@ namespace FinalProject.PageObjects
             EnterNickname(nickname);
             EnterCompanyName(companyName);
             EnterPhoneNumber(phoneNumber);
-            EnterFirstAddress(firstAddress);
-            SelectCountryFromCountriesDropdownMenu(countryValue);
-            SelectStateFromStatesDropdownMenu(stateValue);
-            EnterCounty(county);
-            EnterCity(city);
-            EnterZipCode(zipCode);
+            EnterFirstAddress(ConfigurationManager.AppSettings["Address1"]);
+            SelectCountryFromCountriesDropdownMenu(ConfigurationManager.AppSettings["Country"]);
+            SelectStateFromStatesDropdownMenu(ConfigurationManager.AppSettings["State"]);
+            EnterCounty(ConfigurationManager.AppSettings["County"]);
+            EnterCity(ConfigurationManager.AppSettings["City"]);
+            EnterZipCode(ConfigurationManager.AppSettings["PostalCode"]);
             ClickSaveButton();
             ClickAddressRadioButton(nickname);
         }
