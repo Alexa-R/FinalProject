@@ -99,7 +99,7 @@ namespace FinalProject.PageObjects
             new WrapperWebElement(By.XPath($"//*[@class='shop-menu']//*[@class='shop-links-list'][.//a[text()='{categoryName}']]//a[text()='{subcategoryName}']")).Click();
         }
 
-        public void SearchItemInSearchInputField(string item)
+        public void FindItemInSearchInputField(string item)
         {
             SearchInputField.SendKeys(item);
             SearchInputField.SendKeys(Keys.Enter);

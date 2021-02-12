@@ -13,7 +13,7 @@ namespace FinalProject.TestCases.UserFlow
         {
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            Pages.BasePage.SearchItemInSearchInputField("Shampoo");
+            Pages.BasePage.FindItemInSearchInputField("Shampoo");
             Pages.SearchResultPage.SelectBrandInFilterBar(PlpFilterBrandNamesConstants.Catwalk);
             Pages.SearchResultPage.WaitUntilThumbnailReload();
             Pages.SearchResultPage.ClickFirstActiveProductThumbnailAddToBagButton();

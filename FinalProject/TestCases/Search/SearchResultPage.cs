@@ -13,7 +13,7 @@ namespace FinalProject.TestCases.Search
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             var searchString = "GL 2/0 DARKEST NATURAL BROWN";
-            Pages.BasePage.SearchItemInSearchInputField(searchString);
+            Pages.BasePage.FindItemInSearchInputField(searchString);
             Assert.That(Pages.ProductPage.GetProductHeaderText(), Contains.Substring(searchString).IgnoreCase);
         }
     }

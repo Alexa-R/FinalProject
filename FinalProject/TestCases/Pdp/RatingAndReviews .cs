@@ -18,7 +18,7 @@ namespace FinalProject.TestCases.Pdp
         {
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            Pages.BasePage.SearchItemInSearchInputField("Mix Master");
+            Pages.BasePage.FindItemInSearchInputField("Mix Master");
             Pages.ProductPage.WaitUntilProductImageIsDisplayed();
             Pages.ProductPage.ClickWriteReviewButton();
             Pages.ProductPage.ClickReviewStar(_numberOfReviewStars);
