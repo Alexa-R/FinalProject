@@ -16,7 +16,7 @@ namespace FinalProject.TestCases
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDownTest()
+        public void TearDownTest()
         {
             WebDriverFactory.CloseAllDrivers();
         }
