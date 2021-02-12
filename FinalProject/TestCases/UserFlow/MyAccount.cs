@@ -22,9 +22,9 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickViewBagButton();
             Pages.CartPage.ClickContinueToCheckout();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            CheckoutHelper.AddNewShippingAddress();
+            Pages.CheckoutPage.AddNewShippingAddress();
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
-            CheckoutHelper.AddNewBillingAddress();
+            Pages.CheckoutPage.AddNewBillingAddress();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();

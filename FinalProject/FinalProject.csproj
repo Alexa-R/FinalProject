@@ -109,7 +109,6 @@
     <Compile Include="Constants\ShopMenuConstants\ShopMenuHairCareSubcategories.cs" />
     <Compile Include="Constants\WeeksOfMonthConstants.cs" />
     <Compile Include="Helpers\AddToCartHelper.cs" />
-    <Compile Include="Helpers\CheckoutHelper.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\RandomHelper.cs" />
     <Compile Include="Helpers\WaitHelper.cs" />

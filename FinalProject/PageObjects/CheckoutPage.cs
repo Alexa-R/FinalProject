@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.WrapperElement;
 using FinalProject.WrapperFactory;
@@ -8,6 +9,16 @@ namespace FinalProject.PageObjects
 {
     public class CheckoutPage : BasePage
     {
+
+        private static string companyName = "TestCompany";
+        private static string phoneNumber = "1234567";
+        private static string firstAddress = "77 Massachusetts Avenue";
+        private static string countryValue = "US";
+        private static string stateValue = "MA";
+        private static string county = "Middlesex";
+        private static string city = "Cambridge";
+        private static string zipCode = "02139";
+
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
         private WrapperWebElement PoNumberInputField => new WrapperWebElement(By.XPath("//*[@id='poNumber']"));
@@ -250,6 +261,40 @@ namespace FinalProject.PageObjects
         public void ClickAddressRadioButton(string nickname)
         {
             new WrapperWebElement(By.XPath($"//*[@class='radiocheck_wrap'][.//*[text()='{nickname}']]//*[@class='fill']")).Click();
+        }
+
+        public void AddNewShippingAddress()
+        {
+            var nickname = RandomHelper.GetRandomString(12);
+            ClickAddNewAddressButton();
+            EnterNickname(nickname);
+            EnterCompanyName(companyName);
+            EnterPhoneNumber(phoneNumber);
+            EnterFirstAddress(firstAddress);
+            SelectCountryFromCountriesDropdownMenu(countryValue);
+            SelectStateFromStatesDropdownMenu(stateValue);
+            EnterCounty(county);
+            EnterCity(city);
+            EnterZipCode(zipCode);
+            ClickSaveButton();
+            ClickAddressRadioButton(nickname);
+        }
+
+        public void AddNewBillingAddress()
+        {
+            var nickname = RandomHelper.GetRandomString(12);
+            ClickAddNewAddressButton();
+            EnterNickname(nickname);
+            EnterCompanyName(companyName);
+            EnterPhoneNumber(phoneNumber);
+            EnterFirstAddress(firstAddress);
+            SelectCountryFromCountriesDropdownMenu(countryValue);
+            SelectStateFromStatesDropdownMenu(stateValue);
+            EnterCounty(county);
+            EnterCity(city);
+            EnterZipCode(zipCode);
+            ClickSaveButton();
+            ClickAddressRadioButton(nickname);
         }
     }
 }
