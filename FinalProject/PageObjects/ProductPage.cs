@@ -13,7 +13,6 @@ namespace FinalProject.PageObjects
         private WrapperWebElement ReviewUsernameInputField => new WrapperWebElement(By.XPath("//input[contains(@id,'yotpo_input_review_username')]"));
         private WrapperWebElement ReviewEmailInputField => new WrapperWebElement(By.XPath("//input[contains(@id,'yotpo_input_review_email')]"));
         private WrapperWebElement ReviewPostButton => new WrapperWebElement(By.XPath("//*[contains(@id,'write-review-tabpanel')]//*[@data-button-type='submit']"));
-        private WrapperWebElement FirstReviewStarsRating => new WrapperWebElement(By.XPath("//*[@class='yotpo-review yotpo-regular-box' and @data-review-id='0']//*[@class='yotpo-review-stars ']"));
         private WrapperWebElement FirstReviewTitle => new WrapperWebElement(By.XPath("//*[@class='yotpo-review yotpo-regular-box' and @data-review-id='0']//*[@role='heading']"));
         private WrapperWebElement FirstReviewContent => new WrapperWebElement(By.XPath("//*[@class='yotpo-review yotpo-regular-box' and @data-review-id='0']//*[@class='content-review']"));
         private WrapperWebElement FirstReviewUsername => new WrapperWebElement(By.XPath("//*[@class='yotpo-review yotpo-regular-box' and @data-review-id='0']//*[contains(@class,'user-name')]"));
@@ -26,6 +25,7 @@ namespace FinalProject.PageObjects
         public void ClickWriteReviewButton()
         {
             WriteReviewButton.Click();
+
             if (ReviewTitleInputField.Displayed == false)
             {
                 WriteReviewButton.Click();
@@ -66,12 +66,7 @@ namespace FinalProject.PageObjects
         {
             ReviewPostButton.Click();
         }
-
-        public string GetFirstReviewStarsRatingText()
-        {
-            return FirstReviewStarsRating.Text;
-        }
-
+        
         public string GetFirstReviewTitleText()
         {
             return FirstReviewTitle.Text;
