@@ -15,7 +15,7 @@ namespace FinalProject.TestCases
             WebDriverFactory.Driver.Manage().Window.Maximize();
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void TearDownTest()
         {
             WebDriverFactory.CloseAllDrivers();
