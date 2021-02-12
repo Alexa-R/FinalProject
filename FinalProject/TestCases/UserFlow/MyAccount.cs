@@ -7,16 +7,23 @@ namespace FinalProject.TestCases.UserFlow
 {
     public class MyAccount : BaseTest
     {
+        private string _nicknameForShipping;
+        private string _companyNameForShipping;
+        private string _phoneNumberForShipping;
+        private string _nicknameForBilling;
+        private string _companyNameForBilling;
+        private string _phoneNumberForBilling;
+
         [Test]
         public void RegisteredUserAddsNewAddressFromCheckoutPageToShipWhenCompletingBuy()
         {
             var searchString = "Shampoo";
-            var nicknameForShipping = $"Nickname{RandomHelper.GetRandomString(8)}";
-            var companyNameForShipping = $"CompanyName{RandomHelper.GetRandomString(8)}";
-            var phoneNumberForShipping = "1234567";
-            var nicknameForBilling = $"Nickname{RandomHelper.GetRandomString(8)}";
-            var companyNameForBilling = $"CompanyName{RandomHelper.GetRandomString(8)}";
-            var phoneNumberForBilling = "7654321";
+            _nicknameForShipping = $"Nickname{RandomHelper.GetRandomString(8)}";
+            _companyNameForShipping = $"CompanyName{RandomHelper.GetRandomString(8)}";
+            _phoneNumberForShipping = "1234567";
+            _nicknameForBilling = $"Nickname{RandomHelper.GetRandomString(8)}";
+            _companyNameForBilling = $"CompanyName{RandomHelper.GetRandomString(8)}";
+            _phoneNumberForBilling = "7654321";
 
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.FindItemInSearchInputField(searchString);
@@ -27,9 +34,9 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickViewBagButton();
             Pages.CartPage.ClickContinueToCheckout();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            Pages.CheckoutPage.AddNewAddress(nicknameForShipping, companyNameForShipping, phoneNumberForShipping);
+            Pages.CheckoutPage.AddNewAddress(_nicknameForShipping, _companyNameForShipping, _phoneNumberForShipping);
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
-            Pages.CheckoutPage.AddNewAddress(nicknameForBilling, companyNameForBilling, phoneNumberForBilling);
+            Pages.CheckoutPage.AddNewAddress(_nicknameForBilling, _companyNameForBilling, _phoneNumberForBilling);
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
