@@ -13,8 +13,8 @@ namespace FinalProject.TestCases.Authentication
         {
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            var userMenuButtonLabelPattern = $"WELCOME, " + @"\w{1,}";
-            StringAssert.IsMatch(userMenuButtonLabelPattern, Pages.BasePage.GetUserMenuButtonText());
+            var welcomeMessagePattern = $"WELCOME, " + @"\w{1,}";
+            StringAssert.IsMatch(welcomeMessagePattern, Pages.BasePage.GetUserMenuButtonText());
             Assert.IsTrue(Pages.BasePage.IsSelectedAccountButtonDisplayed());
             Assert.IsTrue(Pages.BasePage.IsBagButtonDisplayed());
         }
