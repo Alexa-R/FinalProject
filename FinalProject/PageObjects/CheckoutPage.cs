@@ -244,8 +244,7 @@ namespace FinalProject.PageObjects
 
         public void WaitUntilOrderSummarySectionIsLoaded()
         {
-            var estimatedTotalText = EstimatedTotalOrderSummaryValue.Text;
-            EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(estimatedTotalText);
+            EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(EstimatedTotalOrderSummaryValue.Text);
         }
 
         public void ClickAddressRadioButton(string nickname)
