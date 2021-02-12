@@ -21,8 +21,7 @@ namespace FinalProject.TestCases.Pdp
             _reviewContent = $"Review content {RandomHelper.GetRandomString(12)}";
             _reviewUsername = $"{RandomHelper.GetRandomString(8)}";
             _reviewEmail = $"{RandomHelper.GetRandomString(12)}@mail.ru";
-
-            LoginHelper.LoginAsUser();
+            
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.FindItemInSearchInputField(searchString);
             Pages.ProductPage.WaitUntilProductImageIsDisplayed();
@@ -32,8 +31,7 @@ namespace FinalProject.TestCases.Pdp
             Pages.ProductPage.EnterReviewContent(_reviewContent);
             Pages.ProductPage.EnterReviewUsername(_reviewUsername);
             Pages.ProductPage.EnterReviewEmail(_reviewEmail);
-            Pages.ProductPage.ClickReviewPostButton();
-            Assert.That(Pages.ProductPage.GetFirstReviewStarsRatingText(), Contains.Substring(_numberOfReviewStars.ToString()).IgnoreCase);
+            Pages.ProductPage.ClickReviewPostButton(); 
             Assert.AreEqual(_reviewTitle.ToUpper(), Pages.ProductPage.GetFirstReviewTitleText());
             Assert.AreEqual(_reviewContent, Pages.ProductPage.GetFirstReviewContentText());
             Assert.AreEqual(_reviewUsername, Pages.ProductPage.GetFirstReviewUsernameText());

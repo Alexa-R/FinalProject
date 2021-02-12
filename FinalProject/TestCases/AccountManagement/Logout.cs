@@ -1,5 +1,4 @@
 ﻿using FinalProject.Constants;
-using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
 
@@ -10,7 +9,6 @@ namespace FinalProject.TestCases.AccountManagement
         [Test]
         public void VerifyUserIsAbleToLogout()
         {
-            LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.ClickUserMenuButton();
             Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);

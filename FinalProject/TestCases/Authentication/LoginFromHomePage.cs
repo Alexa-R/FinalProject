@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using FinalProject.Constants;
-using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
 
@@ -11,11 +10,11 @@ namespace FinalProject.TestCases.Authentication
         [Test]
         public void VerifyUserIsAbleToLogin()
         {
-            LoginHelper.LoginAsUser();
-            Pages.HomePage.WaitUntilHomePageIsLoaded();
             var welcomeMessagePattern = $"WELCOME, " + @"\w{1,}";
-            StringAssert.IsMatch(welcomeMessagePattern, Pages.BasePage.GetUserMenuButtonText());
+            
+            Pages.HomePage.WaitUntilHomePageIsLoaded();
             Assert.IsTrue(Pages.BasePage.IsSelectedAccountButtonDisplayed());
+            StringAssert.IsMatch(welcomeMessagePattern, Pages.BasePage.GetUserMenuButtonText());
             Assert.IsTrue(Pages.BasePage.IsBagButtonDisplayed());
         }
 
@@ -23,12 +22,9 @@ namespace FinalProject.TestCases.Authentication
         public void VerifyErrorMessageForInvalidEmailAddress()
         {
             var invalidEmail = "invalidEmail";
-
-            if (Pages.BasePage.IsUserMenuButtonDisplayed())
-            {
-                Pages.BasePage.ClickUserMenuButton();
-                Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
-            }
+            
+            Pages.BasePage.ClickUserMenuButton();
+            Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
 
             if (Pages.BasePage.IsLoginPopupDisplayed() == false)
             {

@@ -15,6 +15,7 @@ namespace FinalProject.PageObjects
         private static string phoneNumber = "1234567";
 
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
+        private WrapperWebElement PaymentMethodDropdownList => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//ul"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
         private WrapperWebElement PoNumberInputField => new WrapperWebElement(By.XPath("//*[@id='poNumber']"));
         private WrapperWebElement PoNumberSubmitButton => new WrapperWebElement(By.XPath("//button[text()='Submit']"));
@@ -44,11 +45,15 @@ namespace FinalProject.PageObjects
 
         public void ClickPaymentMethodDropdownMenu()
         {
-            PaymentMethodDropdownMenu.WaitForElementIsDisplayed();
             PaymentMethodDropdownMenu.Click();
+
+            if (PaymentMethodDropdownList.Displayed == false)
+            {
+                PaymentMethodDropdownMenu.Click();
+            }
         }
 
-        public void SelectPaymentMethodFromPaymentMethodDropdownList(string paymentMethodName)
+        public void SelectPaymentMethodFromPaymentMethodDropdown(string paymentMethodName)
         {
             new WrapperWebElement(By.XPath($"//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//li[text()='{paymentMethodName}']")).Click();
         }
@@ -58,7 +63,7 @@ namespace FinalProject.PageObjects
             ShippingMethodDropdownMenu.Click();
         }
 
-        public void SelectShippingMethodFromShippingMethodDropdownList(string shippingMethodName)
+        public void SelectShippingMethodFromShippingMethodDropdown(string shippingMethodName)
         {
             new WrapperWebElement(By.XPath($"//g-fancy-select[contains(@params,'ShippingMethod')]//li[text()='{shippingMethodName}']")).Click();
         }
@@ -81,14 +86,17 @@ namespace FinalProject.PageObjects
 
         public void ClickChangeShippingAddressLink()
         {
-            ChangeShippingAddressLink.WaitForElementIsDisplayed();
             ChangeShippingAddressLink.Click();
         }
 
         public void ClickAddNewAddressButton()
         {
-            AddNewAddressButton.WaitForElementIsDisplayed();
             AddNewAddressButton.Click();
+
+            if (NicknameInputField.Displayed == false)
+            {
+                AddNewAddressButton.Click();
+            }
         }
 
         public void EnterNickname(string nickname)
@@ -144,13 +152,11 @@ namespace FinalProject.PageObjects
 
         public void ClickChangeBillingAddressLink()
         {
-            ChangeBillingAddressLink.WaitForElementIsDisplayed();
             ChangeBillingAddressLink.Click();
         }
 
         public bool IsOrderConfirmationContainerDisplayed()
         {
-            OrderConfirmationContainer.WaitForElementIsDisplayed();
             return OrderConfirmationContainer.Displayed;
         }
 
@@ -184,29 +190,29 @@ namespace FinalProject.PageObjects
             return RecurringOrderFrequencyDropdownMenu.Displayed;
         }
 
-        public void ClickRecurringOrderFrequencyDropdownMenu()
+        public void ClickRecurringOrderFrequencyDropdown()
         {
             RecurringOrderFrequencyDropdownMenu.Click();
         }
 
-        public IList<string> GetRecurringOrderFrequencyDropdownMenuElementsText()
+        public IList<string> GetRecurringOrderFrequencyDropdownElementsText()
         {
-            var recurringOrderFrequencyDropdownMenuElementsList =  WebDriverFactory.Driver.FindElements(By.XPath("//*[@id='CC-scheduledOrder-scheduleMode']//option"));
-            var recurringOrderFrequencyDropdownMenuElementsTextList = new List<string>();
-            for (var i = 0; i < recurringOrderFrequencyDropdownMenuElementsList.Count; i++)
+            var recurringOrderFrequencyDropdownMenuList =  WebDriverFactory.Driver.FindElements(By.XPath("//*[@id='CC-scheduledOrder-scheduleMode']//option"));
+            var recurringOrderFrequencyDropdownMenuTextList = new List<string>();
+            for (var i = 0; i < recurringOrderFrequencyDropdownMenuList.Count; i++)
             {
-                recurringOrderFrequencyDropdownMenuElementsTextList.Add(recurringOrderFrequencyDropdownMenuElementsList[i].Text);
+                recurringOrderFrequencyDropdownMenuTextList.Add(recurringOrderFrequencyDropdownMenuList[i].Text);
             }
 
-            return recurringOrderFrequencyDropdownMenuElementsTextList;
+            return recurringOrderFrequencyDropdownMenuTextList;
         }
 
-        public void SelectFrequencyFromFrequencyDropdownMenu(string frequencyName)
+        public void SelectFrequencyFromFrequencyDropdown(string frequencyName)
         {
             new WrapperWebElement(By.XPath($"//*[@id='CC-scheduledOrder-scheduleMode']//option[text()='{frequencyName}']")).Click();
         }
 
-        public bool AreRecurringOrderDaysOfWeekListElementsDisplayed()
+        public bool AreRecurringOrderDaysOfWeekElementsDisplayed()
         {
             bool isDisplayed = false;
             for (var i = 0; i < RecurringOrderLists.DaysOfWeekList.Count; i++)
@@ -217,7 +223,7 @@ namespace FinalProject.PageObjects
             return isDisplayed;
         }
 
-        public bool AreRecurringOrderWeeksOfMonthListElementsDisplayed()
+        public bool AreRecurringOrderWeeksOfMonthElementsDisplayed()
         {
             bool isDisplayed = false;
             for (var i = 0; i < RecurringOrderLists.WeeksOfMonthList.Count; i++)
@@ -248,7 +254,7 @@ namespace FinalProject.PageObjects
             return new WrapperWebElement(By.XPath($"//*[@class='cart-summary__value-row'][.//*[text()='{valueName}']]//g-price")).Displayed;
         }
 
-        public void WaitUntilOrderSummarySectionIsLoaded()
+        public void WaitUntilOrderSummaryIsLoaded()
         {
             EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(EstimatedTotalOrderSummaryValue.Text);
         }
@@ -260,7 +266,7 @@ namespace FinalProject.PageObjects
 
         public void AddNewShippingAddress()
         {
-            var nickname = RandomHelper.GetRandomString(12);
+            var nickname = $"Nickname_{RandomHelper.GetRandomString(12)}";
             ClickAddNewAddressButton();
             EnterNickname(nickname);
             EnterCompanyName(companyName);

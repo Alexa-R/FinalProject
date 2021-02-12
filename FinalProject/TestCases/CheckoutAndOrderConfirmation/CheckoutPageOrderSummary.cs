@@ -1,5 +1,4 @@
 ﻿using FinalProject.Constants;
-using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.PageObjects;
 using NUnit.Framework;
@@ -11,7 +10,6 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
         [Test]
         public void VerifyOrderSummaryDisplayIsCorrect()
         {
-            LoginHelper.LoginAsUser();
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
@@ -20,9 +18,9 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
             Pages.CheckoutPage.AddNewBillingAddress();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.VisaEndingIn1026);
+            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickShippingMethodDropdownMenu();
-            Pages.CheckoutPage.SelectShippingMethodFromShippingMethodDropdownList(ShippingMethodNamesConstants.UpsGround);
+            Pages.CheckoutPage.SelectShippingMethodFromShippingMethodDropdown(ShippingMethodNamesConstants.UpsGround);
             Pages.CheckoutPage.ClickMakeRecurringOrderButton();
             Assert.True(Pages.CheckoutPage.IsRecurringOrderModalDisplayed());
             Assert.True(Pages.CheckoutPage.IsRecurringOrderNameDisplayed());
@@ -30,12 +28,12 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Assert.True(Pages.CheckoutPage.IsRecurringOrderEndDisplayed());
             Assert.True(Pages.CheckoutPage.IsRecurringOrderFrequencyDropdownMenuDisplayed());
 
-            Pages.CheckoutPage.ClickRecurringOrderFrequencyDropdownMenu();
-            CollectionAssert.AreEqual(RecurringOrderLists.RecurringOrderFrequenciesTextList, Pages.CheckoutPage.GetRecurringOrderFrequencyDropdownMenuElementsText());
+            Pages.CheckoutPage.ClickRecurringOrderFrequencyDropdown();
+            CollectionAssert.AreEqual(RecurringOrderLists.RecurringOrderFrequenciesTextList, Pages.CheckoutPage.GetRecurringOrderFrequencyDropdownElementsText());
 
-            Pages.CheckoutPage.SelectFrequencyFromFrequencyDropdownMenu(RecurringOrderFrequenciesNamesConstants.Weekly);
-            Assert.True(Pages.CheckoutPage.AreRecurringOrderDaysOfWeekListElementsDisplayed());
-            Assert.True(Pages.CheckoutPage.AreRecurringOrderWeeksOfMonthListElementsDisplayed());
+            Pages.CheckoutPage.SelectFrequencyFromFrequencyDropdown(RecurringOrderFrequenciesNamesConstants.Weekly);
+            Assert.True(Pages.CheckoutPage.AreRecurringOrderDaysOfWeekElementsDisplayed());
+            Assert.True(Pages.CheckoutPage.AreRecurringOrderWeeksOfMonthElementsDisplayed());
 
             Pages.CheckoutPage.ClickRecurringOrderCancelButton();
             Assert.True(Pages.CheckoutPage.IsCartSummaryTotalItemsTextDisplayed());
