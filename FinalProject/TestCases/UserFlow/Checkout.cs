@@ -13,7 +13,7 @@ namespace FinalProject.TestCases.UserFlow
             var poNumber = "123456789";
 
             LoginHelper.LoginAsUser();
-            AddToCartHelper.AddItemToCartFromHomePage();
+            Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.WaitUntilOrderSummarySectionIsLoaded();
@@ -29,7 +29,7 @@ namespace FinalProject.TestCases.UserFlow
         public void RegisteredUserWithVisaPayment()
         {
             LoginHelper.LoginAsUser();
-            AddToCartHelper.AddItemToCartFromHomePage();
+            Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.WaitUntilOrderSummarySectionIsLoaded();
@@ -43,7 +43,7 @@ namespace FinalProject.TestCases.UserFlow
         public void RegisteredUserCreatingShippingAddressOnCheckoutStep()
         {
             LoginHelper.LoginAsUser();
-            AddToCartHelper.AddItemToCartFromHomePage();
+            Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();

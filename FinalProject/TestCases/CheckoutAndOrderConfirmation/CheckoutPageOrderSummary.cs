@@ -12,7 +12,7 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
         public void VerifyOrderSummaryDisplayIsCorrect()
         {
             LoginHelper.LoginAsUser();
-            AddToCartHelper.AddItemToCartFromHomePage();
+            Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();

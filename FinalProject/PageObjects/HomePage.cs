@@ -27,5 +27,11 @@ namespace FinalProject.PageObjects
             FirstActiveRecommendProductThumbnailAddToBagButton.Click();
             WaitUntilPageIsLoaded();
         }
+
+        public void AddItemToCart()
+        {
+            WaitUntilHomePageIsLoaded();
+            ClickFirstActiveRecommendProductThumbnailAddToBagButton();
+        }
     }
 }
