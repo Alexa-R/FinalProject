@@ -20,6 +20,7 @@ namespace FinalProject.WrapperElement
             get
             {
                 IWebElement result;
+
                 if (_webElementImplementation == null)
                 {
                     result = GetElementWhenExists(_by);
@@ -101,44 +102,26 @@ namespace FinalProject.WrapperElement
         public bool Displayed
         {
             get
-            {
+            { 
                 try
                 {
-                    WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Displayed);
+                    WaitForElementIsDisplayed();
+
                     return WebElementImplementation.Displayed;
                 }
                 catch (WebDriverTimeoutException)
                 {
                     return false;
                 }
-                catch (NoSuchElementException)
-                {
-                    return false;
-                }
             }
         }
         
-        public void WaitForElementIsPresent(int? timeout = null) =>
-            WaitForElementExistence(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int) timeout));
-
         public void WaitForElementDisappear(int? timeout = null) =>
-            WaitForElementExistence(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int) timeout), DefaultPollingInterval, false);
-
-        public void WaitForElementIsEnabled(int? timeout = null) =>
-            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
-                .Until(d => WebElementImplementation.Enabled);
-
-        public void WaitForElementIsDisabled(int? timeout = null) =>
-            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
-                .Until(d => !WebElementImplementation.Enabled);
+            WaitForElementExistence(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), DefaultPollingInterval, false);
 
         public void WaitForElementIsDisplayed(int? timeout = null) =>
-            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
+            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), exceptionTypes: new[] { typeof(NoSuchElementException) })
                 .Until(d => WebElementImplementation.Displayed);
-
-        public void WaitForElementToBeClickable(int? timeout = null) =>
-            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
-                .Until(ExpectedConditions.ElementToBeClickable(WebElementImplementation));
 
         public void WaitForElementIsStale(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
@@ -151,6 +134,7 @@ namespace FinalProject.WrapperElement
         private IWebElement GetElementWhenExists(By @by, int timeout = default)
         {
             IsExists(timeout, true);
+
             return _webElementImplementation = WebDriverFactory.Driver.FindElement(@by);
         }
 
