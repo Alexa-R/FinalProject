@@ -199,6 +199,7 @@ namespace FinalProject.PageObjects
         {
             var recurringOrderFrequencyDropdownMenuList =  WebDriverFactory.Driver.FindElements(By.XPath("//*[@id='CC-scheduledOrder-scheduleMode']//option"));
             var recurringOrderFrequencyDropdownMenuTextList = new List<string>();
+
             for (var i = 0; i < recurringOrderFrequencyDropdownMenuList.Count; i++)
             {
                 recurringOrderFrequencyDropdownMenuTextList.Add(recurringOrderFrequencyDropdownMenuList[i].Text);
@@ -215,6 +216,7 @@ namespace FinalProject.PageObjects
         public bool AreRecurringOrderDaysOfWeekElementsDisplayed()
         {
             bool isDisplayed = false;
+
             for (var i = 0; i < RecurringOrderLists.DaysOfWeekList.Count; i++)
             {
                 isDisplayed = new WrapperWebElement(By.XPath($"//*[@class='form-group'][.//*[text()='Choose day(s) of week:']]//*[text()='{RecurringOrderLists.DaysOfWeekList[i]}']")).Displayed;
@@ -226,6 +228,7 @@ namespace FinalProject.PageObjects
         public bool AreRecurringOrderWeeksOfMonthElementsDisplayed()
         {
             bool isDisplayed = false;
+
             for (var i = 0; i < RecurringOrderLists.WeeksOfMonthList.Count; i++)
             {
                 isDisplayed = new WrapperWebElement(By.XPath($"//*[@class='form-group'][.//*[text()='Choose week(s) of month:']]//*[text()='{RecurringOrderLists.WeeksOfMonthList[i]}']")).Displayed;
