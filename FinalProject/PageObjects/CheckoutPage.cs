@@ -10,10 +10,6 @@ namespace FinalProject.PageObjects
 {
     public class CheckoutPage : BasePage
     {
-
-        private static string companyName = "TestCompany";
-        private static string phoneNumber = "1234567";
-
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
         private WrapperWebElement PaymentMethodDropdownList => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//ul"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
@@ -267,26 +263,8 @@ namespace FinalProject.PageObjects
             new WrapperWebElement(By.XPath($"//*[@class='radiocheck_wrap'][.//*[text()='{nickname}']]//*[@class='fill']")).Click();
         }
 
-        public void AddNewShippingAddress()
+        public void AddNewAddress(string nickname, string companyName, string phoneNumber)
         {
-            var nickname = $"Nickname_{RandomHelper.GetRandomString(12)}";
-            ClickAddNewAddressButton();
-            EnterNickname(nickname);
-            EnterCompanyName(companyName);
-            EnterPhoneNumber(phoneNumber);
-            EnterFirstAddress(ConfigurationManager.AppSettings["Address1"]);
-            SelectCountryFromCountriesDropdownMenu(ConfigurationManager.AppSettings["Country"]);
-            SelectStateFromStatesDropdownMenu(ConfigurationManager.AppSettings["State"]);
-            EnterCounty(ConfigurationManager.AppSettings["County"]);
-            EnterCity(ConfigurationManager.AppSettings["City"]);
-            EnterZipCode(ConfigurationManager.AppSettings["PostalCode"]);
-            ClickSaveButton();
-            ClickAddressRadioButton(nickname);
-        }
-
-        public void AddNewBillingAddress()
-        {
-            var nickname = RandomHelper.GetRandomString(12);
             ClickAddNewAddressButton();
             EnterNickname(nickname);
             EnterCompanyName(companyName);

@@ -1,4 +1,5 @@
 ﻿using FinalProject.Constants;
+using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
 
@@ -39,11 +40,15 @@ namespace FinalProject.TestCases.UserFlow
         [Test]
         public void RegisteredUserCreatingShippingAddressOnCheckoutStep()
         {
+            var nicknameForShipping = $"Nickname_{RandomHelper.GetRandomString(8)}";
+            var companyNameForShipping = $"CompanyName_{RandomHelper.GetRandomString(8)}";
+            var phoneNumberForShipping = $"PhoneNumber_{RandomHelper.GetRandomString(8)}";
+
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
-            Pages.CheckoutPage.AddNewShippingAddress();
+            Pages.CheckoutPage.AddNewAddress(nicknameForShipping, companyNameForShipping, phoneNumberForShipping);
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
