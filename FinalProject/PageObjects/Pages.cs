@@ -1,14 +1,10 @@
-﻿using FinalProject.WrapperFactory;
-using OpenQA.Selenium.Support.PageObjects;
-
-namespace FinalProject.PageObjects
+﻿namespace FinalProject.PageObjects
 {
     public static class Pages
     {
         private static T GetPage<T>() where T : new()
         {
             var page = new T();
-            PageFactory.InitElements(WebDriverFactory.Driver, page);
 
             return page;
         }
