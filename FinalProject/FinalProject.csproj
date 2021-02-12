@@ -127,7 +127,7 @@
     <Compile Include="TestCases\BaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\CheckoutAndOrderConfirmation\CheckoutPageOrderSummary.cs" />
-    <Compile Include="TestCases\Pdp\RatingAndReviews .cs" />
+    <Compile Include="TestCases\Pdp\RatingAndReviews.cs" />
     <Compile Include="TestCases\Plp\PlpSearch.cs" />
     <Compile Include="TestCases\Plp\PlpSortingRule.cs" />
     <Compile Include="TestCases\Search\SearchResultPage.cs" />

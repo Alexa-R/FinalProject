@@ -7,18 +7,25 @@ namespace FinalProject.TestCases.Pdp
     [TestFixture]
     public class RatingAndReviews : BaseTest
     {
-        private int _numberOfReviewStars = 5;
-        private string _reviewTitle = "Review title";
-        private string _reviewContent = "Review content";
-        private string _reviewUsername = "James";
-        private string _reviewEmail = "test@mail.ru";
+        private int _numberOfReviewStars;
+        private string _reviewTitle;
+        private string _reviewContent;
+        private string _reviewUsername;
+        private string _reviewEmail;
 
         [Test]
         public void AbilityToAddReview()
         {
+            var searchString = "Mix Master";
+            _numberOfReviewStars = 5;
+            _reviewTitle = $"Review title {RandomHelper.GetRandomString(12)}";
+            _reviewContent = $"Review content {RandomHelper.GetRandomString(12)}";
+            _reviewUsername = $"{RandomHelper.GetRandomString(8)}";
+            _reviewEmail = $"{RandomHelper.GetRandomString(12)}@mail.ru";
+
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            Pages.BasePage.FindItemInSearchInputField("Mix Master");
+            Pages.BasePage.FindItemInSearchInputField(searchString);
             Pages.ProductPage.WaitUntilProductImageIsDisplayed();
             Pages.ProductPage.ClickWriteReviewButton();
             Pages.ProductPage.ClickReviewStar(_numberOfReviewStars);
