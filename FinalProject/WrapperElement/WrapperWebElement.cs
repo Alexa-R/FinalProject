@@ -12,7 +12,6 @@ namespace FinalProject.WrapperElement
     {
         public static TimeSpan DefaultPollingInterval = TimeSpan.FromMilliseconds(500);
         public static TimeSpan Timeout = TimeSpan.FromSeconds(15);
-        private readonly bool _canCache;
         private readonly By _by;
         private IWebElement _webElementImplementation;
 
@@ -24,11 +23,6 @@ namespace FinalProject.WrapperElement
                 if (_webElementImplementation == null)
                 {
                     result = GetElementWhenExists(_by);
-
-                    if (_canCache)
-                    {
-                        _webElementImplementation = result;
-                    }
                 }
                 else
                 {
@@ -42,7 +36,6 @@ namespace FinalProject.WrapperElement
         public WrapperWebElement(By @by)
         {
             _by = @by;
-            _canCache = true;
         }
 
         public IWebElement FindElement(By @by)
