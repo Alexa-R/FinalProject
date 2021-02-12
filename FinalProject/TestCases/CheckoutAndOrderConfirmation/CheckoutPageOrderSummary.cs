@@ -11,12 +11,12 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
         [Test]
         public void VerifyOrderSummaryDisplayIsCorrect()
         {
-            var nicknameForShipping = $"Nickname_{RandomHelper.GetRandomString(8)}";
-            var companyNameForShipping = $"CompanyName_{RandomHelper.GetRandomString(8)}";
-            var phoneNumberForShipping = $"PhoneNumber_{RandomHelper.GetRandomString(8)}";
-            var nicknameForBilling = $"Nickname_{RandomHelper.GetRandomString(8)}";
-            var companyNameForBilling = $"CompanyName_{RandomHelper.GetRandomString(8)}";
-            var phoneNumberForBilling = $"PhoneNumber_{RandomHelper.GetRandomString(8)}";
+            var nicknameForShipping = $"Nickname{RandomHelper.GetRandomString(8)}";
+            var companyNameForShipping = $"CompanyName{RandomHelper.GetRandomString(8)}";
+            var phoneNumberForShipping = "1234567";
+            var nicknameForBilling = $"Nickname{RandomHelper.GetRandomString(8)}";
+            var companyNameForBilling = $"CompanyName{RandomHelper.GetRandomString(8)}";
+            var phoneNumberForBilling = "7654321";
 
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
