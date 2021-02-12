@@ -10,6 +10,8 @@ namespace FinalProject.TestCases.UserFlow
         [Test]
         public void RegisteredUserWithPoNumberPaymentMethod()
         {
+            var poNumber = "123456789";
+
             LoginHelper.LoginAsUser();
             AddToCartHelper.AddItemToCartFromHomePage();
             Pages.BasePage.ClickBagButton();
@@ -17,7 +19,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.CheckoutPage.WaitUntilOrderSummarySectionIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdownList(PaymentMethodNamesConstants.InvoiceNumber);
-            Pages.CheckoutPage.EnterPoNumber("123456789");
+            Pages.CheckoutPage.EnterPoNumber(poNumber);
             Pages.CheckoutPage.ClickPoNumberSubmitButton();
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());

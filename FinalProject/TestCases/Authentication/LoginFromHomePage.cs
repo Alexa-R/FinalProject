@@ -22,6 +22,8 @@ namespace FinalProject.TestCases.Authentication
         [Test]
         public void VerifyErrorMessageForInvalidEmailAddress()
         {
+            var invalidEmail = "invalidEmail";
+
             if (Pages.BasePage.IsUserMenuButtonDisplayed())
             {
                 Pages.BasePage.ClickUserMenuButton();
@@ -33,7 +35,7 @@ namespace FinalProject.TestCases.Authentication
                 Pages.BasePage.ClickLoginButton();
             }
             
-            Pages.LoginPopup.EnterEmail("invalidMail");
+            Pages.LoginPopup.EnterEmail(invalidEmail);
             Pages.LoginPopup.EnterPassword(ConfigurationManager.AppSettings["Password"]);
             Pages.LoginPopup.ClickLoginButton();
             Assert.AreEqual("Please enter a valid Email Address.", Pages.LoginPopup.GetEmailValidationMessageText());

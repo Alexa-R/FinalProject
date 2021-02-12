@@ -9,9 +9,10 @@ namespace FinalProject.TestCases.Search
         [Test]
         public void VerifySiteRedirectsToPdpWhenOneProductIsReturnedAsSearchResult()
         {
+            var searchString = "GL 2/0 DARKEST NATURAL BROWN";
+
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            var searchString = "GL 2/0 DARKEST NATURAL BROWN";
             Pages.BasePage.FindItemInSearchInputField(searchString);
             Assert.That(Pages.ProductPage.GetProductHeaderText(), Contains.Substring(searchString).IgnoreCase);
         }

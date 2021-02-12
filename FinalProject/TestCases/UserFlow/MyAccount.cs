@@ -10,9 +10,11 @@ namespace FinalProject.TestCases.UserFlow
         [Test]
         public void RegisteredUserAddsNewAddressFromCheckoutPageToShipWhenCompletingBuy()
         {
+            var searchString = "Shampoo";
+
             LoginHelper.LoginAsUser();
             Pages.HomePage.WaitUntilHomePageIsLoaded();
-            Pages.BasePage.FindItemInSearchInputField("Shampoo");
+            Pages.BasePage.FindItemInSearchInputField(searchString);
             Pages.SearchResultPage.SelectBrandInFilterBar(PlpFilterBrandNamesConstants.Catwalk);
             Pages.SearchResultPage.WaitUntilThumbnailReload();
             Pages.SearchResultPage.ClickFirstActiveProductThumbnailAddToBagButton();
