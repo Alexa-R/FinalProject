@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.AccountManagement
 {
-    [TestFixture]
     public class Logout : BaseTest
     {
         [Test]

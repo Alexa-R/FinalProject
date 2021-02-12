@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.Plp
 {
-    [TestFixture]
     public class PlpSortingRule : BaseTest
     {
         [Test]

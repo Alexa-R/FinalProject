@@ -4,7 +4,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.Pdp
 {
-    [TestFixture]
     public class RatingAndReviews : BaseTest
     {
         private int _numberOfReviewStars;

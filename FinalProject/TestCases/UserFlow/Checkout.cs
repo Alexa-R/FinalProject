@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.UserFlow
 {
-    [TestFixture]
     public class Checkout : BaseTest
     {
         [Test]

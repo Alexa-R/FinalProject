@@ -4,7 +4,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.Search
 {
-    [TestFixture]
     public class SearchResultPage : BaseTest
     {
         [Test]

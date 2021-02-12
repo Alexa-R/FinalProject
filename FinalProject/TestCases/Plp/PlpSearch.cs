@@ -4,7 +4,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.Plp
 {
-    [TestFixture]
     public class PlpSearch : BaseTest
     {
         [Test]

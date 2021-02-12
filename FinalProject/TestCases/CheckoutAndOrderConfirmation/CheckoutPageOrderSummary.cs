@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
 {
-    [TestFixture]
     public class CheckoutPageOrderSummary : BaseTest
     {
         [Test]

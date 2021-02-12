@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases.Authentication
 {
-    [TestFixture]
     public class LoginFromHomePage : BaseTest
     {
         [Test]
