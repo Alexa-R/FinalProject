@@ -1,4 +1,5 @@
-﻿using FinalProject.WrapperElement;
+﻿using FinalProject.Helpers;
+using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
@@ -11,6 +12,8 @@ namespace FinalProject.PageObjects
         {
             ContinueToCheckout.Click();
             WaitUntilPageIsLoaded();
+            LogHelper.Info("Continue To Checkout is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Continue To Checkout is clicked");
         }
     }
 }

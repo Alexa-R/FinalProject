@@ -1,4 +1,5 @@
-﻿using FinalProject.WrapperElement;
+﻿using FinalProject.Helpers;
+using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
@@ -20,6 +21,8 @@ namespace FinalProject.PageObjects
         public void WaitUntilProductImageIsDisplayed()
         {
             MainProductImage.WaitForElementIsDisplayed();
+            LogHelper.Info("Main Product Image is displayed");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Main Product Image is displayed");
         }
 
         public void ClickWriteReviewButton()
@@ -30,6 +33,9 @@ namespace FinalProject.PageObjects
             {
                 WriteReviewButton.Click();
             }
+
+            LogHelper.Info("Write Review Button is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Write Review Button is clicked");
         }
 
         public string GetProductHeaderText()
@@ -40,33 +46,45 @@ namespace FinalProject.PageObjects
         public void ClickReviewStar(int starIndex)
         {
             new WrapperWebElement(By.XPath($"//*[contains(@id,'write-review-tabpanel')]//*[@class='stars-wrapper']//span[{starIndex}]")).Click();
+            LogHelper.Info($"{starIndex} Review Star is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{starIndex} Review Star is clicked");
         }
 
         public void EnterReviewTitle(string reviewTitle)
         {
             ReviewTitleInputField.SendKeys(reviewTitle);
+            LogHelper.Info("Review Title is entered");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Review Title is entered");
         }
 
         public void EnterReviewContent(string reviewContent)
         {
             ReviewContentTextArea.SendKeys(reviewContent);
+            LogHelper.Info("Review Content is entered");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Review Content is entered");
         }
 
         public void EnterReviewUsername(string reviewUsername)
         {
             ReviewUsernameInputField.SendKeys(reviewUsername);
+            LogHelper.Info("Review Username is entered");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Review Username is entered");
         }
 
         public void EnterReviewEmail(string reviewEmail)
         {
             ReviewEmailInputField.SendKeys(reviewEmail);
+            LogHelper.Info("Review Email is entered");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Review Email is entered");
         }
 
         public void ClickReviewPostButton()
         {
             ReviewPostButton.Click();
+            LogHelper.Info("Review Post Button is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Review Post Button is clicked");
         }
-        
+
         public string GetFirstReviewTitleText()
         {
             return FirstReviewTitle.Text;

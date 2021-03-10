@@ -35,7 +35,7 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
             Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickShippingMethodDropdownMenu();
-            Pages.CheckoutPage.SelectShippingMethodFromShippingMethodDropdown(ShippingMethodNamesConstants.UpsGround);
+            Pages.CheckoutPage.SelectShippingMethodFromShippingMethodDropdown(ShippingMethodNamesConstants.GroundUs);
             Pages.CheckoutPage.ClickMakeRecurringOrderButton();
             Assert.True(Pages.CheckoutPage.IsRecurringOrderModalDisplayed());
             Assert.True(Pages.CheckoutPage.IsRecurringOrderNameDisplayed());

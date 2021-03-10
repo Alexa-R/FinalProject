@@ -1,4 +1,5 @@
-﻿using FinalProject.WrapperElement;
+﻿using FinalProject.Helpers;
+using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
 namespace FinalProject.PageObjects
@@ -13,6 +14,8 @@ namespace FinalProject.PageObjects
         public void SelectBrandInFilterBar(string filterBrandName)
         {
             new WrapperWebElement(By.XPath($"//*[@id='refinementNameDesktop{filterBrandName}']")).Click();
+            LogHelper.Info($"{filterBrandName} brand In Filter Bar is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{filterBrandName} brand In Filter Bar is clicked");
         }
 
         public string GetSortDropdownMenuText()
@@ -28,11 +31,15 @@ namespace FinalProject.PageObjects
         public void ClickFirstActiveProductThumbnailAddToBagButton()
         {
             FirstActiveProductThumbnailAddToBagButton.Click();
+            LogHelper.Info("Add To Bag Button of the First Active Product Thumbnail is clicked");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Add To Bag Button of the First Active Product Thumbnail is clicked");
         }
-        
+
         public void WaitUntilThumbnailReload()
         { 
             Thumbnail.WaitForElementIsStale();
+            LogHelper.Info("Thumbnail is reloaded");
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Thumbnail is reloaded");
         }
     }
 }
