@@ -9,17 +9,22 @@ namespace FinalProject.PageObjects
     {
         private WrapperWebElement FirstActiveRecommendProductThumbnailAddToBagButton => new WrapperWebElement(By.XPath("//*[contains(@class,'prod_thumbnail')]//button[not(contains(@class,'disabled'))][.//*[text()='Add to bag']]"));
         private WrapperWebElement RecommendationsCarousel => new WrapperWebElement(By.XPath("//*[@id='wi2100088-oc3-recommendations-carousel-id']"));
-        
+
         public void WaitUntilHomePageIsLoaded()
         {
-            try
+            while (true)
             {
-                RecommendationsCarousel.WaitForElementIsDisplayed();
-            }
-            catch (WebDriverTimeoutException)
-            {
-                WebDriverFactory.Driver.Navigate().Refresh();
-                RecommendationsCarousel.WaitForElementIsDisplayed();
+                try
+                {
+                    RecommendationsCarousel.WaitForElementIsDisplayed();
+                }
+                catch (WebDriverTimeoutException)
+                {
+                    WebDriverFactory.Driver.Navigate().Refresh();
+                    RecommendationsCarousel.WaitForElementIsDisplayed();
+                    continue;
+                }
+                break;
             }
 
             LogHelper.Info("HomePage is loaded");
