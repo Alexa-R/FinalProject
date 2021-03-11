@@ -4,6 +4,6 @@
     {
         public const string VisaEndingIn1000 = "visa ending in 1000";
         public const string VisaEndingIn1026 = "visa ending in 1026";
-        public const string InvoiceNumber = "Invoice Number";
+        public const string InvoicePayment = "Invoice Payment";
     }
 }
