@@ -90,6 +90,12 @@ namespace FinalProject.PageObjects
         public void ClickChangeShippingAddressLink()
         {
             ChangeShippingAddressLink.Click();
+
+            if (AddNewAddressButton.Displayed == false)
+            {
+                ChangeShippingAddressLink.Click();
+            }
+
             LogHelper.Info("Change Shipping Address Link is clicked");
             ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Change Shipping Address Link is clicked");
         }
@@ -193,6 +199,12 @@ namespace FinalProject.PageObjects
         public void ClickMakeRecurringOrderButton()
         {
             MakeRecurringOrderButton.Click();
+
+            if (RecurringOrderModal.Displayed == false)
+            {
+                MakeRecurringOrderButton.Click();
+            }
+
             LogHelper.Info("Make Recurring Order Button is clicked");
             ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Make Recurring Order Button is clicked");
         }
