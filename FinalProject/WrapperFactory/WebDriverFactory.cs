@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -48,7 +50,7 @@ namespace FinalProject.WrapperFactory
                 case "Chrome":
                     if (_driver == null)
                     {
-                        _driver = new ChromeDriver(@"C:\drivers");
+                        _driver = new ChromeDriver(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "../../Drivers/"));
                         Drivers.Add("Chrome", Driver);
                     }
                     break;
