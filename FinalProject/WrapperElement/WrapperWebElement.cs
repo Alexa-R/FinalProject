@@ -57,7 +57,7 @@ namespace FinalProject.WrapperElement
                 return true;
             });
 
-        public void SendKeys(string text) => WaitHelper.GetExplicitWait()
+        public void SendKeys(string text) => WaitHelper.GetExplicitWait(exceptionTypes: new[] { typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException) })
             .Until(d =>
             {
                 WebElementImplementation.SendKeys(text);
@@ -154,8 +154,7 @@ namespace FinalProject.WrapperElement
             }
         }
 
-        private void WaitForElementExistence(TimeSpan? timeout = null, TimeSpan? pollingInterval = null,
-            bool shouldExists = true) =>
+        private void WaitForElementExistence(TimeSpan? timeout = null, TimeSpan? pollingInterval = null, bool shouldExists = true) =>
             WaitHelper.GetExplicitWait(timeout ?? Timeout, pollingInterval ?? DefaultPollingInterval)
                 .Until(d => d.FindElements(_by).Count != 0 == shouldExists);
     }

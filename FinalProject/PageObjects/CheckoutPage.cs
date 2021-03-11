@@ -14,7 +14,6 @@ namespace FinalProject.PageObjects
         private WrapperWebElement PaymentMethodDropdownList => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//ul"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
         private WrapperWebElement PoNumberInputField => new WrapperWebElement(By.XPath("//*[@id='poNumber']"));
-        private WrapperWebElement PoNumberSubmitButton => new WrapperWebElement(By.XPath("//button[text()='Submit']"));
         private WrapperWebElement PlaceOrderButton => new WrapperWebElement(By.XPath("//*[@aria-label='Place Order']"));
         private WrapperWebElement ChangeShippingAddressLink => new WrapperWebElement(By.XPath("//*[@id='shippingAddress']//*[@class='bold link_primary']"));
         private WrapperWebElement ChangeBillingAddressLink => new WrapperWebElement(By.XPath("//*[@id='billingAddress']//*[@class='bold link_primary']"));
@@ -79,14 +78,7 @@ namespace FinalProject.PageObjects
             LogHelper.Info("PO number is entered");
             ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("PO number is entered");
         }
-
-        public void ClickPoNumberSubmitButton()
-        {
-            PoNumberSubmitButton.Click();
-            LogHelper.Info("Po Number Submit Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Po Number Submit Button is clicked");
-        }
-
+        
         public void ClickPlaceOrderButton()
         {
             PlaceOrderButton.Click();

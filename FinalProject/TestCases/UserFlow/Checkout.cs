@@ -21,9 +21,8 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.WaitUntilOrderSummaryIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.InvoiceNumber);
+            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.InvoicePayment);
             Pages.CheckoutPage.EnterPoNumber(poNumber);
-            Pages.CheckoutPage.ClickPoNumberSubmitButton();
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
         }
