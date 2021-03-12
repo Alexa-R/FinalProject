@@ -42,10 +42,6 @@ namespace FinalProject.Helpers
         {
             _test.Log(Status.Pass, stepDescription);
         }
-        public void SetStepStatusWarning(string stepDescription)
-        {
-            _test.Log(Status.Warning, stepDescription);
-        }
 
         public void SetTestStatusPass()
         {
