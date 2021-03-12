@@ -9,7 +9,7 @@ namespace FinalProject.Helpers
         public static void Info(string message)
         {
             Logger.Info(message);
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass(message);
+            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusInfo(message);
         }
     }
 }

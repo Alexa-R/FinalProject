@@ -38,9 +38,9 @@ namespace FinalProject.Helpers
             _test = _extent.CreateTest(testName);
         }
 
-        public void SetStepStatusPass(string stepDescription)
+        public void SetStepStatusInfo(string stepDescription)
         {
-            _test.Log(Status.Pass, stepDescription);
+            _test.Log(Status.Info, stepDescription);
         }
 
         public void SetTestStatusPass()
