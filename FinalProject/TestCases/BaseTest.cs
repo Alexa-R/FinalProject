@@ -4,11 +4,13 @@ using FinalProject.Constants;
 using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using FinalProject.WrapperFactory;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 
 namespace FinalProject.TestCases
 {
+    [AllureNUnit]
     public class BaseTest : BaseSuite
     {
         [SetUp]
