@@ -33,9 +33,9 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
             Pages.CheckoutPage.AddNewAddress(_nicknameForBilling, _companyNameForBilling, _phoneNumberForBilling);
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
+            Pages.CheckoutPage.ClickPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickShippingMethodDropdownMenu();
-            Pages.CheckoutPage.SelectShippingMethodFromShippingMethodDropdown(ShippingMethodNamesConstants.GroundUs);
+            Pages.CheckoutPage.ClickShippingMethodFromShippingMethodDropdown(ShippingMethodNamesConstants.GroundUs);
             Pages.CheckoutPage.ClickMakeRecurringOrderButton();
             Assert.True(Pages.CheckoutPage.IsRecurringOrderModalDisplayed());
             Assert.True(Pages.CheckoutPage.IsRecurringOrderNameDisplayed());
@@ -46,7 +46,7 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Pages.CheckoutPage.ClickRecurringOrderFrequencyDropdown();
             CollectionAssert.AreEqual(RecurringOrderLists.RecurringOrderFrequenciesTextList, Pages.CheckoutPage.GetRecurringOrderFrequencyDropdownElementsText());
 
-            Pages.CheckoutPage.SelectFrequencyFromFrequencyDropdown(RecurringOrderFrequenciesNamesConstants.Weekly);
+            Pages.CheckoutPage.ClickFrequencyFromFrequencyDropdown(RecurringOrderFrequenciesNamesConstants.Weekly);
             Assert.True(Pages.CheckoutPage.AreRecurringOrderDaysOfWeekElementsDisplayed());
             Assert.True(Pages.CheckoutPage.AreRecurringOrderWeeksOfMonthElementsDisplayed());
 

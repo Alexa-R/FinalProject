@@ -38,7 +38,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.CheckoutPage.ClickChangeBillingAddressLink();
             Pages.CheckoutPage.AddNewAddress(_nicknameForBilling, _companyNameForBilling, _phoneNumberForBilling);
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
+            Pages.CheckoutPage.ClickPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
         }

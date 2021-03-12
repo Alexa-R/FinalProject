@@ -21,7 +21,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.WaitUntilOrderSummaryIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.InvoicePayment);
+            Pages.CheckoutPage.ClickPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.InvoicePayment);
             Pages.CheckoutPage.EnterPoNumber(poNumber);
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
@@ -35,7 +35,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.WaitUntilOrderSummaryIsLoaded();
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
+            Pages.CheckoutPage.ClickPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
         }
@@ -53,7 +53,7 @@ namespace FinalProject.TestCases.UserFlow
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
             Pages.CheckoutPage.AddNewAddress(_nicknameForShipping, _companyNameForShipping, _phoneNumberForShipping);
             Pages.CheckoutPage.ClickPaymentMethodDropdownMenu();
-            Pages.CheckoutPage.SelectPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
+            Pages.CheckoutPage.ClickPaymentMethodFromPaymentMethodDropdown(PaymentMethodNamesConstants.VisaEndingIn1026);
             Pages.CheckoutPage.ClickPlaceOrderButton();
             Assert.True(Pages.CheckoutPage.IsOrderConfirmationContainerDisplayed());
         }

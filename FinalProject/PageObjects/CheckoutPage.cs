@@ -49,7 +49,7 @@ namespace FinalProject.PageObjects
             }
         }
 
-        public void SelectPaymentMethodFromPaymentMethodDropdown(string paymentMethodName)
+        public void ClickPaymentMethodFromPaymentMethodDropdown(string paymentMethodName)
         {
             LogHelper.Info($"Clicking on the {paymentMethodName} from Payment Method Dropdown Menu");
             new WrapperWebElement(By.XPath($"//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//li[text()='{paymentMethodName}']")).Click();
@@ -61,7 +61,7 @@ namespace FinalProject.PageObjects
             ShippingMethodDropdownMenu.Click();
         }
 
-        public void SelectShippingMethodFromShippingMethodDropdown(string shippingMethodName)
+        public void ClickShippingMethodFromShippingMethodDropdown(string shippingMethodName)
         {
             LogHelper.Info($"Clicking on the {shippingMethodName} from Shipping Method Dropdown Menu");
             new WrapperWebElement(By.XPath($"//g-fancy-select[contains(@params,'ShippingMethod')]//li[text()='{shippingMethodName}']")).Click();
@@ -144,13 +144,13 @@ namespace FinalProject.PageObjects
             CountyInputField.SendKeys(county);
         }
 
-        public void SelectCountryFromCountriesDropdownMenu(string countryValue)
+        public void ClickCountryFromCountriesDropdownMenu(string countryValue)
         {
             LogHelper.Info($"Clicking on the {countryValue} from Countries Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='countryNew']/option[@value='{countryValue}']")).Click();
         }
 
-        public void SelectStateFromStatesDropdownMenu(string stateValue)
+        public void ClickStateFromStatesDropdownMenu(string stateValue)
         {
             LogHelper.Info($"Clicking on the {stateValue} from States Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='stateNew']/option[@value='{stateValue}']")).Click();
@@ -236,7 +236,7 @@ namespace FinalProject.PageObjects
             return recurringOrderFrequencyDropdownMenuTextList;
         }
 
-        public void SelectFrequencyFromFrequencyDropdown(string frequencyName)
+        public void ClickFrequencyFromFrequencyDropdown(string frequencyName)
         {
             LogHelper.Info($"Clicking on the {frequencyName} from Frequency Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='CC-scheduledOrder-scheduleMode']//option[text()='{frequencyName}']")).Click();
@@ -311,8 +311,8 @@ namespace FinalProject.PageObjects
             EnterCompanyName(companyName);
             EnterPhoneNumber(phoneNumber);
             EnterFirstAddress(ConfigurationManager.AppSettings["Address1"]);
-            SelectCountryFromCountriesDropdownMenu(ConfigurationManager.AppSettings["Country"]);
-            SelectStateFromStatesDropdownMenu(ConfigurationManager.AppSettings["State"]);
+            ClickCountryFromCountriesDropdownMenu(ConfigurationManager.AppSettings["Country"]);
+            ClickStateFromStatesDropdownMenu(ConfigurationManager.AppSettings["State"]);
             EnterCounty(ConfigurationManager.AppSettings["County"]);
             EnterCity(ConfigurationManager.AppSettings["City"]);
             EnterZipCode(ConfigurationManager.AppSettings["PostalCode"]);
