@@ -1,4 +1,6 @@
-﻿using log4net;
+﻿using System;
+using Allure.Commons;
+using log4net;
 
 namespace FinalProject.Helpers
 {
@@ -10,6 +12,13 @@ namespace FinalProject.Helpers
         {
             Logger.Info(message);
             ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusInfo(message);
+
+            var step = new StepResult()
+            {
+                name = message
+            };
+            AllureLifecycle.Instance.StartStep(Guid.NewGuid().ToString(), step);
+            AllureLifecycle.Instance.StopStep();
         }
     }
 }
