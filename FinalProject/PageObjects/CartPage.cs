@@ -10,10 +10,9 @@ namespace FinalProject.PageObjects
 
         public void ClickContinueToCheckout()
         {
+            LogHelper.Info("Clicking on the Continue To Checkout");
             ContinueToCheckout.Click();
             WaitUntilPageIsLoaded();
-            LogHelper.Info("Continue To Checkout is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Continue To Checkout is clicked");
         }
     }
 }

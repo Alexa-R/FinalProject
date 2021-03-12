@@ -40,209 +40,191 @@ namespace FinalProject.PageObjects
 
         public void ClickPaymentMethodDropdownMenu()
         {
+            LogHelper.Info("Clicking on the Payment Method Dropdown Menu");
             PaymentMethodDropdownMenu.Click();
 
             if (PaymentMethodDropdownList.Displayed == false)
             {
                 PaymentMethodDropdownMenu.Click();
             }
-
-            LogHelper.Info("Payment Method Dropdown Menu is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Payment Method Dropdown Menu is clicked");
         }
 
         public void SelectPaymentMethodFromPaymentMethodDropdown(string paymentMethodName)
         {
+            LogHelper.Info($"Clicking on the {paymentMethodName} from Payment Method Dropdown Menu");
             new WrapperWebElement(By.XPath($"//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//li[text()='{paymentMethodName}']")).Click();
-            LogHelper.Info($"{paymentMethodName} from Payment Method Dropdown Menu is selected");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{paymentMethodName} from Payment Method Dropdown Menu is selected");
         }
-
+        
         public void ClickShippingMethodDropdownMenu()
         {
+            LogHelper.Info("Clicking on the Shipping Method Dropdown Menu");
             ShippingMethodDropdownMenu.Click();
-            LogHelper.Info("Shipping Method Dropdown Menu is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Shipping Method Dropdown Menu is clicked");
         }
 
         public void SelectShippingMethodFromShippingMethodDropdown(string shippingMethodName)
         {
+            LogHelper.Info($"Clicking on the {shippingMethodName} from Shipping Method Dropdown Menu");
             new WrapperWebElement(By.XPath($"//g-fancy-select[contains(@params,'ShippingMethod')]//li[text()='{shippingMethodName}']")).Click();
-            LogHelper.Info($"{shippingMethodName} from Shipping Method Dropdown Menu is selected");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{shippingMethodName} from Shipping Method Dropdown Menu is selected");
         }
 
         public void EnterPoNumber(string pONumber)
         {
+            LogHelper.Info($"Entering of the PO number '{pONumber}'");
             PoNumberInputField.SendKeys(pONumber);
-            LogHelper.Info("PO number is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("PO number is entered");
         }
         
         public void ClickPlaceOrderButton()
         {
+            LogHelper.Info("Clicking on the Place Order Button");
             PlaceOrderButton.Click();
             WaitUntilPageIsLoaded();
-            LogHelper.Info("Place Order Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Place Order Button is clicked");
         }
 
         public void ClickChangeShippingAddressLink()
         {
+            LogHelper.Info("Clicking on the Change Shipping Address Link");
             ChangeShippingAddressLink.Click();
 
             if (AddNewAddressButton.Displayed == false)
             {
                 ChangeShippingAddressLink.Click();
             }
-
-            LogHelper.Info("Change Shipping Address Link is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Change Shipping Address Link is clicked");
         }
 
         public void ClickAddNewAddressButton()
         {
+            LogHelper.Info("Clicking on the Add New Address Button");
             AddNewAddressButton.Click();
 
             if (NicknameInputField.Displayed == false)
             {
                 AddNewAddressButton.Click();
             }
-
-            LogHelper.Info("Add New Address Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Add New Address Button is clicked");
         }
 
         public void EnterNickname(string nickname)
         {
+            LogHelper.Info($"Entering of the Nickname '{nickname}'");
             NicknameInputField.SendKeys(nickname);
-            LogHelper.Info("Nickname is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Nickname is entered");
         }
 
         public void EnterCompanyName(string companyName)
         {
+            LogHelper.Info($"Entering of the Company Name '{companyName}'");
             CompanyNameInputField.SendKeys(companyName);
-            LogHelper.Info("Company Name is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Company Name is entered");
         }
 
         public void EnterPhoneNumber(string phoneNumber)
         {
+            LogHelper.Info($"Entering of the Phone Number '{phoneNumber}'");
             PhoneNumberInputField.SendKeys(phoneNumber);
-            LogHelper.Info("Phone Number is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Phone Number is entered");
         }
 
         public void EnterFirstAddress(string firstAddress)
         {
+            LogHelper.Info($"Entering of the First Address '{firstAddress}'");
             FirstAddressInputField.SendKeys(firstAddress);
-            LogHelper.Info("First Address is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("First Address is entered");
         }
 
         public void EnterCity(string city)
         {
+            LogHelper.Info($"Entering of the City '{city}'");
             CityInputField.SendKeys(city);
-            LogHelper.Info("City is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("City is entered");
         }
 
         public void EnterZipCode(string zipCode)
         {
+            LogHelper.Info($"Entering of the ZipCode '{zipCode}'");
             ZipCodeInputField.SendKeys(zipCode);
-            LogHelper.Info("ZipCode is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("ZipCode is entered");
         }
 
         public void EnterCounty(string county)
         {
+            LogHelper.Info($"Entering of the County '{county}'");
             CountyInputField.SendKeys(county);
-            LogHelper.Info("County is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("County is entered");
         }
 
         public void SelectCountryFromCountriesDropdownMenu(string countryValue)
         {
+            LogHelper.Info($"Clicking on the {countryValue} from Countries Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='countryNew']/option[@value='{countryValue}']")).Click();
-            LogHelper.Info($"{countryValue} from Countries Dropdown Menu is selected");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{countryValue} from Countries Dropdown Menu is selected");
         }
 
         public void SelectStateFromStatesDropdownMenu(string stateValue)
         {
+            LogHelper.Info($"Clicking on the {stateValue} from States Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='stateNew']/option[@value='{stateValue}']")).Click();
-            LogHelper.Info($"{stateValue} from States Dropdown Menu is selected");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{stateValue} from States Dropdown Menu is selected");
         }
 
         public void ClickSaveButton()
         {
+            LogHelper.Info("Clicking on the Save Button");
             SaveButton.Click();
             WaitUntilPageIsLoaded();
-            LogHelper.Info("Save Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Save Button is clicked");
         }
 
         public void ClickChangeBillingAddressLink()
         {
+            LogHelper.Info("Clicking on the Change Billing Address Link");
             ChangeBillingAddressLink.Click();
-            LogHelper.Info("Change Billing Address Link is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Change Billing Address Link is clicked");
         }
-
+        
         public bool IsOrderConfirmationContainerDisplayed()
         {
+            LogHelper.Info("Checking the display of the Order Confirmation Container");
             return OrderConfirmationContainer.Displayed;
         }
 
         public void ClickMakeRecurringOrderButton()
         {
+            LogHelper.Info("Clicking on the Make Recurring Order Button");
             MakeRecurringOrderButton.Click();
 
             if (RecurringOrderModal.Displayed == false)
             {
                 MakeRecurringOrderButton.Click();
             }
-
-            LogHelper.Info("Make Recurring Order Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Make Recurring Order Button is clicked");
         }
 
         public bool IsRecurringOrderModalDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Modal");
             return RecurringOrderModal.Displayed;
         }
 
         public bool IsRecurringOrderNameDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Name");
             return RecurringOrderName.Displayed;
         }
 
         public bool IsRecurringOrderStartDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Start");
             return RecurringOrderStart.Displayed;
         }
 
         public bool IsRecurringOrderEndDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order End");
             return RecurringOrderEnd.Displayed;
         }
 
         public bool IsRecurringOrderFrequencyDropdownMenuDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Frequency Dropdown Menu");
             return RecurringOrderFrequencyDropdownMenu.Displayed;
         }
 
         public void ClickRecurringOrderFrequencyDropdown()
         {
+            LogHelper.Info("Clicking on the Recurring Order Frequency Dropdown Menu");
             RecurringOrderFrequencyDropdownMenu.Click();
-            LogHelper.Info("Recurring Order Frequency Dropdown Menu is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Recurring Order Frequency Dropdown Menu is clicked");
         }
 
         public IList<string> GetRecurringOrderFrequencyDropdownElementsText()
         {
+            LogHelper.Info("Getting the Recurring Order Frequency Dropdown Elements Text");
             var recurringOrderFrequencyDropdownMenuList =  WebDriverFactory.Driver.FindElements(By.XPath("//*[@id='CC-scheduledOrder-scheduleMode']//option"));
             var recurringOrderFrequencyDropdownMenuTextList = new List<string>();
 
@@ -256,13 +238,13 @@ namespace FinalProject.PageObjects
 
         public void SelectFrequencyFromFrequencyDropdown(string frequencyName)
         {
+            LogHelper.Info($"Clicking on the {frequencyName} from Frequency Dropdown Menu");
             new WrapperWebElement(By.XPath($"//*[@id='CC-scheduledOrder-scheduleMode']//option[text()='{frequencyName}']")).Click();
-            LogHelper.Info($"{frequencyName} from Frequency Dropdown Menu is selected");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{frequencyName} from Frequency Dropdown Menu is selected");
         }
 
         public bool AreRecurringOrderDaysOfWeekElementsDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Days Of Week Elements");
             bool isDisplayed = false;
 
             for (var i = 0; i < RecurringOrderLists.DaysOfWeekList.Count; i++)
@@ -275,6 +257,7 @@ namespace FinalProject.PageObjects
 
         public bool AreRecurringOrderWeeksOfMonthElementsDisplayed()
         {
+            LogHelper.Info("Checking the display of the Recurring Order Weeks Of Month");
             bool isDisplayed = false;
 
             for (var i = 0; i < RecurringOrderLists.WeeksOfMonthList.Count; i++)
@@ -287,38 +270,38 @@ namespace FinalProject.PageObjects
 
         public void ClickRecurringOrderCancelButton()
         {
+            LogHelper.Info("Clicking on the Recurring Order Cancel Button");
             RecurringOrderCancelButton.Click();
-            LogHelper.Info("Recurring Order Cancel Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Recurring Order Cancel Button is clicked");
         }
 
         public bool IsCartSummaryTotalItemsTextDisplayed()
         {
+            LogHelper.Info("Checking the display of the Cart Summary Total Items");
             return CartSummaryTotalItemsText.Displayed;
         }
 
         public bool IsCartSummaryTotalQuantityTextDisplayed()
         {
+            LogHelper.Info("Checking the display of the Cart Summary Total Quantity");
             return CartSummaryTotalQuantityText.Displayed;
         }
 
         public bool IsOrderSummaryValueDisplayed(string valueName)
         {
+            LogHelper.Info($"Checking the display of the Order Summary {valueName}");
             return new WrapperWebElement(By.XPath($"//*[@class='cart-summary__value-row'][.//*[text()='{valueName}']]//g-price")).Displayed;
         }
 
         public void WaitUntilOrderSummaryIsLoaded()
         {
+            LogHelper.Info("Loading of the Order Summary");
             EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(EstimatedTotalOrderSummaryValue.Text);
-            LogHelper.Info("Order Summary is loaded");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Order Summary is loaded");
         }
 
         public void ClickAddressRadioButton(string nickname)
         {
+            LogHelper.Info("Clicking on the Address Radio Button");
             new WrapperWebElement(By.XPath($"//*[@class='radiocheck_wrap'][.//*[text()='{nickname}']]//*[@class='fill']")).Click();
-            LogHelper.Info("Address Radio Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Address Radio Button is clicked");
         }
 
         public void AddNewAddress(string nickname, string companyName, string phoneNumber)

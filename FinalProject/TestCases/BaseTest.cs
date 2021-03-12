@@ -17,13 +17,10 @@ namespace FinalProject.TestCases
             Extent.CreateTest(TestContext.CurrentContext.Test.Name);
             WebDriverFactory.InitBrowser("Chrome");
             LogHelper.Info("Browser started.");
-            Extent.SetStepStatusPass("Browser started.");
             WebDriverFactory.GoToUrl(ConfigurationManager.AppSettings["URL"]);
             LogHelper.Info($"Browser navigated to the url [{ConfigurationManager.AppSettings["URL"]}].");
-            Extent.SetStepStatusPass($"Browser navigated to the url [{ConfigurationManager.AppSettings["URL"]}].");
             WebDriverFactory.Driver.Manage().Window.Maximize();
             LogHelper.Info("Browser maximized.");
-            Extent.SetStepStatusPass("Browser maximized.");
             LoginAsUser();
         }
 
@@ -57,7 +54,6 @@ namespace FinalProject.TestCases
             {
                 WebDriverFactory.CloseAllDrivers();
                 LogHelper.Info("Browser closed.");
-                Extent.SetStepStatusPass("Browser closed.");
             }
         }
 

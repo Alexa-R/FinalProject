@@ -20,121 +20,116 @@ namespace FinalProject.PageObjects
 
         public void ClickLoginButton()
         {
+            LogHelper.Info("Clicking on the Login Button");
             LoginButton.Click();
-            LogHelper.Info("Login Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Login Button is clicked");
         }
 
         public bool IsLoginButtonDisplayed()
         {
+            LogHelper.Info("Checking on the display of the Login Button");
             return LoginButton.Displayed;
         }
 
         public bool IsLanguagesDropdownMenuDisplayed()
         {
+            LogHelper.Info("Checking on the display of the Languages Dropdown Menu");
             return LanguagesDropdownMenu.Displayed;
         }
 
         public void WaitUntilLoginPopupIsDisplayed()
         {
+            LogHelper.Info("Waiting for the Login Popup display");
             LoginPopup.WaitForElementIsDisplayed();
-            LogHelper.Info("Login Popup is displayed");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Login Button is clicked");
         }
 
         public void ClickUserMenuButton()
         {
+            LogHelper.Info("Clicking on the User Menu Button");
             UserMenuButton.Click();
-            LogHelper.Info("User Menu Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("User Menu Button is clicked");
         }
 
         public string GetUserMenuButtonText()
         {
+            LogHelper.Info("Getting the User Menu Button text");
             return UserMenuButton.Text;
         }
 
         public bool IsUserMenuButtonDisplayed()
         {
+            LogHelper.Info("Waiting for the User Menu Button display");
             return UserMenuButton.Displayed;
         }
 
         public void ClickLinkInUserPopupMenu(string linkName)
         {
+            LogHelper.Info($"Clicking on the {linkName} link in user popup menu");
             new WrapperWebElement(By.XPath($"//li[@class='menu-item-label']/a[text()='{linkName}']")).Click();
-            LogHelper.Info($"{linkName} link in user popup menu is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{linkName} link in user popup menu is clicked");
         }
 
         public bool IsLoginPopupDisplayed()
         {
+            LogHelper.Info("Checking on the display of the Login Popup");
             return LoginPopup.Displayed;
         }
 
         public void ClickBagButton()
         {
+            LogHelper.Info("Clicking on the Bag Button");
             BagButton.Click();
 
             if (CheckoutButton.Displayed == false)
             {
                 BagButton.Click();
             }
-
-            LogHelper.Info("Bag Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Bag Button is clicked");
         }
 
         public bool IsBagButtonDisplayed()
         {
+            LogHelper.Info("Checking the display of the Bag Button");
             return BagButton.Displayed;
         }
 
         public bool IsSelectedAccountButtonDisplayed()
         {
+            LogHelper.Info("Checking the display of the Selected Account Button");
             return SelectedAccountButton.Displayed;
         }
 
         public void ClickCheckoutButton()
         {
+            LogHelper.Info("Clicking on the Checkout Button");
             CheckoutButton.Click();
-            LogHelper.Info("Checkout Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Checkout Button is clicked");
         }
 
         public void ClickViewBagButton()
         {
+            LogHelper.Info("Clicking on the View Bag Button");
             ViewBagButton.Click();
-            LogHelper.Info("View Bag Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("View Bag Button is clicked");
         }
 
         public void ClickShopMenuLink()
         {
+            LogHelper.Info("Clicking on the Shop Menu Link");
             ShopMenuLink.Click();
-            LogHelper.Info("Shop Menu Link is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Shop Menu Link is clicked");
         }
 
         public void ClickSubcategoryInShopMenu(string categoryName, string subcategoryName)
         {
+            LogHelper.Info($"Clicking on the {subcategoryName} subcategory in {categoryName} category");
             new WrapperWebElement(By.XPath($"//*[@class='shop-menu']//*[@class='shop-links-list'][.//a[text()='{categoryName}']]//a[text()='{subcategoryName}']")).Click();
-            LogHelper.Info($"{subcategoryName} subcategory in {categoryName} category is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{subcategoryName} subcategory in {categoryName} category is clicked");
         }
 
         public void FindItemInSearchInputField(string item)
         {
+            LogHelper.Info($"Searching for '{item}' in search input field");
             SearchInputField.SendKeys(item);
             SearchInputField.SendKeys(Keys.Enter);
-            LogHelper.Info($"{item} is searched");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{item} is searched");
         }
 
         public void WaitUntilPageIsLoaded()
         {
-            Spinner.WaitForElementDisappear();
-            LogHelper.Info("Page is loaded");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Page is loaded");
+            LogHelper.Info("Loading of the page");
+            Spinner.WaitForElementDisappear(30000);
         }
     }
 }

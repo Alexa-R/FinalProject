@@ -13,33 +13,32 @@ namespace FinalProject.PageObjects
 
         public void SelectBrandInFilterBar(string filterBrandName)
         {
+            LogHelper.Info($"Clicking on the {filterBrandName} brand In Filter Bar");
             new WrapperWebElement(By.XPath($"//*[@id='refinementNameDesktop{filterBrandName}']")).Click();
-            LogHelper.Info($"{filterBrandName} brand In Filter Bar is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass($"{filterBrandName} brand In Filter Bar is clicked");
         }
 
         public string GetSortDropdownMenuText()
         {
+            LogHelper.Info("Getting the Sort Dropdown Menu Text");
             return SortDropdownMenu.Text;
         }
 
         public string GetSearchResultsLabelText()
         {
+            LogHelper.Info("Getting the Search Results Label");
             return SearchResultsLabel.Text;
         }
 
         public void ClickFirstActiveProductThumbnailAddToBagButton()
         {
+            LogHelper.Info("Clicking on the Add To Bag Button of the First Active Product Thumbnail");
             FirstActiveProductThumbnailAddToBagButton.Click();
-            LogHelper.Info("Add To Bag Button of the First Active Product Thumbnail is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Add To Bag Button of the First Active Product Thumbnail is clicked");
         }
 
         public void WaitUntilThumbnailReload()
-        { 
+        {
+            LogHelper.Info("Reloading of the Thumbnail");
             Thumbnail.WaitForElementIsStale();
-            LogHelper.Info("Thumbnail is reloaded");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Thumbnail is reloaded");
         }
     }
 }

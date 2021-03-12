@@ -13,27 +13,25 @@ namespace FinalProject.PageObjects
 
         public void EnterEmail(string mail)
         {
+            LogHelper.Info($"Entering of the Email '{mail}'");
             EmailInputField.SendKeys(mail);
-            LogHelper.Info("Email is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Email is entered");
         }
 
         public void EnterPassword(string password)
         {
+            LogHelper.Info($"Entering of the Password '{password}'");
             PasswordInputField.SendKeys(password);
-            LogHelper.Info("Password is entered");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Password is entered");
         }
 
         public void ClickLoginButton()
         {
+            LogHelper.Info("Clicking on the Login Button");
             LoginButton.Click();
-            LogHelper.Info("Login Button is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Login Button is clicked");
         }
 
         public string GetEmailValidationMessageText()
         {
+            LogHelper.Info("Getting the Email Validation Message");
             return EmailValidationMessage.Text;
         }
     }

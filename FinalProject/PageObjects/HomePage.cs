@@ -12,6 +12,7 @@ namespace FinalProject.PageObjects
 
         public void WaitUntilHomePageIsLoaded()
         {
+            LogHelper.Info("Loading of the Home Page");
             while (true)
             {
                 try
@@ -26,25 +27,20 @@ namespace FinalProject.PageObjects
                 }
                 break;
             }
-
-            LogHelper.Info("HomePage is loaded");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("HomePage is loaded");
         }
 
         public void ClickFirstActiveRecommendProductThumbnailAddToBagButton()
         {
+            LogHelper.Info("Clicking on the Add To Bag Button of the First Active Recommendation Product Thumbnail");
             FirstActiveRecommendProductThumbnailAddToBagButton.Click();
             WaitUntilPageIsLoaded();
-            LogHelper.Info("Add To Bag Button of the First Active Recommendation Product Thumbnail is clicked");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Add To Bag Button of the First Active Recommendation Product Thumbnail is clicked");
         }
 
         public void AddItemToCart()
         {
+            LogHelper.Info("Adding an item to the cart");
             WaitUntilHomePageIsLoaded();
             ClickFirstActiveRecommendProductThumbnailAddToBagButton();
-            LogHelper.Info("Item is added to cart");
-            ExtentReportsHelper.GetExtentReportsHelper().SetStepStatusPass("Item is added to cart");
         }
     }
 }
