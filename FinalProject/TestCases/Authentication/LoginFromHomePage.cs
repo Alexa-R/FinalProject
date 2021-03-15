@@ -19,10 +19,14 @@ namespace FinalProject.TestCases.Authentication
         }
 
         [Test]
-        public void VerifyErrorMessageForInvalidEmailAddress()
+        [TestCase("simpleString")]
+        [TestCase("test@mail")]
+        [TestCase("test@mail_ru")]
+        [TestCase("test@mai l.ru")]
+        [TestCase("test.mail.ru")]
+        [TestCase("test,mail.ru")]
+        public void VerifyErrorMessageForInvalidEmailAddress(string invalidEmail)
         {
-            var invalidEmail = "invalidEmail";
-
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.ClickUserMenuButton();
             Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
