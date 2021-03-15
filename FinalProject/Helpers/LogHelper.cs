@@ -20,5 +20,10 @@ namespace FinalProject.Helpers
             AllureLifecycle.Instance.StartStep(Guid.NewGuid().ToString(), step);
             AllureLifecycle.Instance.StopStep();
         }
+
+        public static void Error(string message)
+        {
+            Logger.Error(message);
+        }
     }
 }

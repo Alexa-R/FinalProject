@@ -52,12 +52,21 @@ namespace FinalProject.WrapperElement
         public void Clear() => WaitHelper.GetExplicitWait()
             .Until(d =>
             {
-                WebElementImplementation.Clear();
+                try
+                {
+                    WebElementImplementation.Clear();
 
-                return true;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error("Unable to clear the element! Exception message: " + ex.Message);
+
+                    return false;
+                }
             });
 
-        public void SendKeys(string text) => WaitHelper.GetExplicitWait(exceptionTypes: new[] { typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException) })
+        public void SendKeys(string text) => WaitHelper.GetExplicitWait(exceptionTypes: new[] {typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException)})
             .Until(d =>
             {
                 WebElementImplementation.SendKeys(text);
@@ -65,31 +74,66 @@ namespace FinalProject.WrapperElement
                 return true;
             });
 
-        public void Submit() => WaitHelper.GetExplicitWait(exceptionTypes: new[] { typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException) })
+        public void Submit() => WaitHelper.GetExplicitWait(exceptionTypes: new[] {typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException)})
             .Until(d =>
             {
-                WebElementImplementation.Click();
+                try
+                {
+                    WebElementImplementation.Submit();
 
-                return true;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error("Unable to submit the element! Exception message: " + ex.Message);
+
+                    return false;
+                }
             });
 
-        public void Click() => WaitHelper.GetExplicitWait(exceptionTypes: new[] { typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException) })
+        public void Click() => WaitHelper.GetExplicitWait(exceptionTypes: new[] {typeof(StaleElementReferenceException), typeof(ElementClickInterceptedException), typeof(ElementNotInteractableException)})
             .Until(d =>
             {
-                WebElementImplementation.Click();
+                try
+                {
+                    WebElementImplementation.Click();
 
-                return true;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error("Unable to click on the element! Exception message: " + ex.Message);
+
+                    return false;
+                }
+
             });
 
-        public string GetAttribute(string attributeName) => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.GetAttribute(attributeName));
-        
-        public string GetProperty(string propertyName) => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.GetProperty(propertyName));
-        
-        public string GetCssValue(string propertyName) => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.GetCssValue(propertyName));
+        public string GetAttribute(string attributeName) => WaitHelper.GetExplicitWait()
+            .Until(d => WebElementImplementation.GetAttribute(attributeName));
+
+        public string GetProperty(string propertyName) => WaitHelper.GetExplicitWait()
+            .Until(d => WebElementImplementation.GetProperty(propertyName));
+
+        public string GetCssValue(string propertyName) => WaitHelper.GetExplicitWait()
+            .Until(d => WebElementImplementation.GetCssValue(propertyName));
 
         public string TagName => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.TagName);
 
-        public string Text => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Text);
+        public string Text => WaitHelper.GetExplicitWait()
+            .Until(d =>
+        {
+            try
+            {
+                return WebElementImplementation.Text;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("Unable to get the element's text! Exception message: " + ex.Message);
+
+                return null;
+            }
+        });
 
         public bool Enabled => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Enabled);
 
@@ -109,8 +153,10 @@ namespace FinalProject.WrapperElement
 
                     return WebElementImplementation.Displayed;
                 }
-                catch (WebDriverTimeoutException)
+                catch (Exception ex)
                 {
+                    LogHelper.Error("Element is not displayed! Exception message: " + ex.Message);
+                    
                     return false;
                 }
             }
@@ -148,8 +194,10 @@ namespace FinalProject.WrapperElement
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.Error("Element cannot be found! Exception message: " + ex.Message);
+
                 return false;
             }
         }
