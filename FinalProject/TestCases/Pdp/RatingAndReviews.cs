@@ -1,4 +1,5 @@
-﻿using FinalProject.Helpers;
+﻿using System.Configuration;
+using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
 
@@ -22,7 +23,9 @@ namespace FinalProject.TestCases.Pdp
             _reviewContent = $"ReviewContent{RandomHelper.GetRandomString(12)}";
             _reviewUsername = $"{RandomHelper.GetRandomString(8)}";
             _reviewEmail = $"{RandomHelper.GetRandomString(12)}@mail.ru";
-            
+
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.FindItemInSearchInputField(_searchString);
             Pages.ProductPage.WaitUntilProductImageIsDisplayed();

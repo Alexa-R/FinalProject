@@ -1,8 +1,6 @@
 using System;
 using System.Configuration;
-using FinalProject.Constants;
 using FinalProject.Helpers;
-using FinalProject.PageObjects;
 using FinalProject.WrapperFactory;
 using NUnit.Allure.Core;
 using NUnit.Framework;
@@ -23,7 +21,6 @@ namespace FinalProject.TestCases
             LogHelper.Info($"Browser navigated to the url [{ConfigurationManager.AppSettings["URL"]}].");
             WebDriverFactory.Driver.Manage().Window.Maximize();
             LogHelper.Info("Browser maximized.");
-            LoginAsUser();
         }
 
         [TearDown]
@@ -57,25 +54,6 @@ namespace FinalProject.TestCases
                 WebDriverFactory.CloseAllDrivers();
                 LogHelper.Info("Browser closed.");
             }
-        }
-
-        private void LoginAsUser()
-        {
-            if (Pages.BasePage.IsUserMenuButtonDisplayed())
-            {
-                Pages.BasePage.ClickUserMenuButton();
-                Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
-            }
-
-            if (Pages.BasePage.IsLoginPopupDisplayed() == false)
-            {
-                Pages.BasePage.ClickLoginButton();
-            }
-
-            Pages.BasePage.WaitUntilLoginPopupIsDisplayed();
-            Pages.LoginPopup.EnterEmail(ConfigurationManager.AppSettings["Login"]);
-            Pages.LoginPopup.EnterPassword(ConfigurationManager.AppSettings["Password"]);
-            Pages.LoginPopup.ClickLoginButton();
         }
     }
 }

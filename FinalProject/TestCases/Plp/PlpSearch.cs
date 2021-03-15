@@ -1,4 +1,5 @@
-﻿using FinalProject.PageObjects;
+﻿using System.Configuration;
+using FinalProject.PageObjects;
 using NUnit.Framework;
 
 namespace FinalProject.TestCases.Plp
@@ -10,7 +11,9 @@ namespace FinalProject.TestCases.Plp
         {
             var searchString = "shampoo";
             var searchResultLabelPattern = @"\d{1,}" + $" PRODUCT RESULTS FOR '{searchString.ToUpper()}'";
-            
+
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.FindItemInSearchInputField(searchString);
             StringAssert.IsMatch(searchResultLabelPattern, Pages.SearchResultPage.GetSearchResultsLabelText());
