@@ -9,18 +9,22 @@ namespace FinalProject.TestCases
     {
         protected ExtentReportsHelper Extent;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUpReporter()
         {
             Extent = ExtentReportsHelper.GetExtentReportsHelper();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void CloseReporter()
         {
             try
             {
                 Extent.Close();
+                if (ExtentReportsHelper.AreTestsPassed)
+                {
+                    GMailHelper.SendTextMessage();
+                }
             }
             catch (Exception exc)
             {
