@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net.Mail;
 using System.Threading;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
@@ -15,14 +16,14 @@ namespace FinalProject.Helpers
         private static string _applicationName = "Gmail API .NET Quickstart";
         private static GmailService _service;
 
-        public static void ConnectToGMailApi()
+        public static void ConnectToGMailApi(string senderNickname)
         {
             UserCredential credential;
             using (var stream = new FileStream("credentials.json", FileMode.Open, FileAccess.Read))
             {
                 var credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets, _scopes, "Lizy Flower", CancellationToken.None,
+                    GoogleClientSecrets.Load(stream).Secrets, _scopes, senderNickname, CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
             }
 
@@ -33,15 +34,21 @@ namespace FinalProject.Helpers
             });
         }
 
-        public static void SendTextMessage()
+        public static void SendMessageWithAttachment(string senderNickname,string from, string to, string subject, string body, string attachmentPath)
         {
-            ConnectToGMailApi();
-            var textMessage = "To: lizy.flower22@gmail.com\r\n" +
-                               "Subject: test results\r\n" +
-                               "Content-Type: text/html; charset=us-ascii\r\n\r\n" +
-                               "<h1>All tests have passed status! </h1>";
-            var newMsg = new Message { Raw = Base64UrlEncode(textMessage) };
-            _service.Users.Messages.Send(newMsg, "lizy.flower22@gmail.com").Execute();
+            ConnectToGMailApi(senderNickname);
+            var mail = new MailMessage
+            {
+                Subject = subject,
+                Body = body,
+                From = new MailAddress(from),
+                IsBodyHtml = true
+            };
+            mail.To.Add(new MailAddress(to));
+            mail.Attachments.Add(new Attachment(attachmentPath));
+            var mimeMessage = MimeKit.MimeMessage.CreateFromMailMessage(mail);
+            var message = new Message { Raw = Base64UrlEncode(mimeMessage.ToString()) };
+            _service.Users.Messages.Send(message, from).Execute();
         }
 
         private static string Base64UrlEncode(string input)

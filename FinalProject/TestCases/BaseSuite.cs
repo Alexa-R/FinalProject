@@ -21,9 +21,16 @@ namespace FinalProject.TestCases
             try
             {
                 Extent.Close();
+
                 if (ExtentReportsHelper.AreTestsPassed)
                 {
-                    GMailHelper.SendTextMessage();
+                    var senderNickname = "Lizy Flower";
+                    var from = "lizy.flower22@gmail.com";
+                    var to = "lizy.flower22@gmail.com";
+                    var subject = "Test results!";
+                    var body = "All tests have passed status!";
+                    var attachmentPath = "ExtentReports.html";
+                    GMailHelper.SendMessageWithAttachment(senderNickname, from, to, subject, body, attachmentPath);
                 }
             }
             catch (Exception exc)
