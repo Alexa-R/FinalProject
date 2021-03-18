@@ -1,4 +1,5 @@
-﻿using FinalProject.Constants.ShopMenuConstants;
+﻿using System.Configuration;
+using FinalProject.Constants.ShopMenuConstants;
 using FinalProject.PageObjects;
 using NUnit.Framework;
 
@@ -9,6 +10,8 @@ namespace FinalProject.TestCases.Plp
         [Test]
         public void DefaultSortOrderIsBestSeller()
         {
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.ClickShopMenuLink();
             Pages.BasePage.ClickSubcategoryInShopMenu(ShopMenuCategoriesConstants.HairCare, ShopMenuHairCareSubcategories.Shampoos);

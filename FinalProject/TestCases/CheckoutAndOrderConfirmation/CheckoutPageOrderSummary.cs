@@ -1,4 +1,5 @@
-﻿using FinalProject.Constants;
+﻿using System.Configuration;
+using FinalProject.Constants;
 using FinalProject.Helpers;
 using FinalProject.Lists;
 using FinalProject.PageObjects;
@@ -25,6 +26,8 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             _companyNameForBilling = $"CompanyName{RandomHelper.GetRandomString(8)}";
             _phoneNumberForBilling = "7654321";
 
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();

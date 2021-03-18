@@ -1,4 +1,5 @@
-﻿using FinalProject.Constants;
+﻿using System.Configuration;
+using FinalProject.Constants;
 using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
@@ -15,7 +16,9 @@ namespace FinalProject.TestCases.UserFlow
         public void RegisteredUserWithPoNumberPaymentMethod()
         {
             var poNumber = "123456789";
-            
+
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
@@ -30,6 +33,8 @@ namespace FinalProject.TestCases.UserFlow
         [Test]
         public void RegisteredUserWithVisaPayment()
         {
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
@@ -47,6 +52,8 @@ namespace FinalProject.TestCases.UserFlow
             _companyNameForShipping = $"CompanyName{RandomHelper.GetRandomString(8)}";
             _phoneNumberForShipping = "1234567";
 
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.AddItemToCart();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();

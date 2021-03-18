@@ -11,7 +11,9 @@ namespace FinalProject.TestCases.Authentication
         public void VerifyUserIsAbleToLogin()
         {
             var welcomeMessagePattern = $"WELCOME, " + @"\w{1,}";
-            
+
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Assert.IsTrue(Pages.BasePage.IsSelectedAccountButtonDisplayed());
             StringAssert.IsMatch(welcomeMessagePattern, Pages.BasePage.GetUserMenuButtonText());
@@ -27,6 +29,8 @@ namespace FinalProject.TestCases.Authentication
         [TestCase("test,mail.ru")]
         public void VerifyErrorMessageForInvalidEmailAddress(string invalidEmail)
         {
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.ClickUserMenuButton();
             Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);

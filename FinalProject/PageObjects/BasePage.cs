@@ -1,4 +1,6 @@
-﻿using FinalProject.Helpers;
+﻿using System.Configuration;
+using FinalProject.Constants;
+using FinalProject.Helpers;
 using FinalProject.WrapperElement;
 using OpenQA.Selenium;
 
@@ -130,6 +132,28 @@ namespace FinalProject.PageObjects
         {
             LogHelper.Info("Loading of the page");
             Spinner.WaitForElementDisappear(30000);
+        }
+
+        public void LogIn(string login, string password)
+        {
+            if (Pages.BasePage.IsLoginPopupDisplayed() == false)
+            {
+                Pages.BasePage.ClickLoginButton();
+            }
+
+            Pages.BasePage.WaitUntilLoginPopupIsDisplayed();
+            Pages.LoginPopup.EnterEmail(login);
+            Pages.LoginPopup.EnterPassword(password);
+            Pages.LoginPopup.ClickLoginButton();
+        }
+
+        public void CheckUserLoggedIn()
+        {
+            if (Pages.BasePage.IsUserMenuButtonDisplayed())
+            {
+                Pages.BasePage.ClickUserMenuButton();
+                Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
+            }
         }
     }
 }

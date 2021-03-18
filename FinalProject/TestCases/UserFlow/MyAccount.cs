@@ -1,4 +1,5 @@
-﻿using FinalProject.Constants;
+﻿using System.Configuration;
+using FinalProject.Constants;
 using FinalProject.Helpers;
 using FinalProject.PageObjects;
 using NUnit.Framework;
@@ -25,6 +26,8 @@ namespace FinalProject.TestCases.UserFlow
             _companyNameForBilling = $"CompanyName{RandomHelper.GetRandomString(8)}";
             _phoneNumberForBilling = "7654321";
 
+            Pages.BasePage.CheckUserLoggedIn();
+            Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.WaitUntilHomePageIsLoaded();
             Pages.BasePage.FindItemInSearchInputField(searchString);
             Pages.SearchResultPage.SelectBrandInFilterBar(PlpFilterBrandNamesConstants.Catwalk);
