@@ -12,7 +12,6 @@ namespace FinalProject.Helpers
         private static ExtentReports _extent;
         private static ExtentV3HtmlReporter _reporter;
         private static ExtentTest _test;
-        public static bool AreTestsPassed = true;
 
         private ExtentReportsHelper() { }
 
@@ -59,7 +58,6 @@ namespace FinalProject.Helpers
             }
 
             _test.Fail(printMessage);
-            AreTestsPassed = false;
         }
 
         public void SetTestStatusSkipped()
