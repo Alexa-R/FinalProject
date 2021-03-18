@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace FinalProject.TestCases
 {
-    [TestFixture]
+    [SetUpFixture]
     public class BaseSuite
     {
         protected ExtentReportsHelper Extent;

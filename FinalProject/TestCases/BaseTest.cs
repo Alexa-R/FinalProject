@@ -9,12 +9,13 @@ using NUnit.Framework.Interfaces;
 namespace FinalProject.TestCases
 {
     [AllureNUnit]
-    public class BaseTest : BaseSuite
+    [TestFixture]
+    public class BaseTest 
     {
         [SetUp]
         public void SetUpTest()
         {
-            Extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            ExtentReportsHelper.GetExtentReportsHelper().CreateTest(TestContext.CurrentContext.Test.Name);
             WebDriverFactory.InitBrowser("Chrome");
             LogHelper.Info("Browser started.");
             WebDriverFactory.GoToUrl(ConfigurationManager.AppSettings["URL"]);
@@ -35,13 +36,13 @@ namespace FinalProject.TestCases
                 switch (status)
                 {
                     case TestStatus.Failed:
-                        Extent.SetTestStatusFail($"<br>{errorMessage}<br>Stack Trace: <br>{stacktrace}<br>");
+                        ExtentReportsHelper.GetExtentReportsHelper().SetTestStatusFail($"<br>{errorMessage}<br>Stack Trace: <br>{stacktrace}<br>");
                         break;
                     case TestStatus.Skipped:
-                        Extent.SetTestStatusSkipped();
+                        ExtentReportsHelper.GetExtentReportsHelper().SetTestStatusSkipped();
                         break;
                     default:
-                        Extent.SetTestStatusPass();
+                        ExtentReportsHelper.GetExtentReportsHelper().SetTestStatusPass();
                         break;
                 }
             }
