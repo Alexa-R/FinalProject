@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Linq;
 using FinalProject.Helpers;
 using FinalProject.WrapperFactory;
 using OpenQA.Selenium;
@@ -142,16 +143,14 @@ namespace FinalProject.WrapperElement
         public Point Location => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Location);
 
         public Size Size => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Size);
-        
+
         public bool Displayed 
         {
             get
-            { 
+            {
                 try
                 {
-                    WaitForElementIsDisplayed();
-
-                    return true;
+                    return IsPresent && WebElementImplementation.Displayed;
                 }
                 catch (Exception ex)
                 {
@@ -167,17 +166,7 @@ namespace FinalProject.WrapperElement
 
         public void WaitForElementIsDisplayed(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), exceptionTypes: new[] { typeof(NoSuchElementException) })
-                .Until(d =>
-                {
-                    try
-                    {
-                        return WebElementImplementation.Displayed;
-                    }
-                    catch(Exception)
-                    {
-                        return false;
-                    }
-                });
+                .Until(d => IsPresent && WebElementImplementation.Displayed);
 
         public void WaitForElementIsStale(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
@@ -191,8 +180,10 @@ namespace FinalProject.WrapperElement
         {
             IsExists(timeout, true);
 
-            return _webElementImplementation = WebDriverFactory.Driver.FindElement(@by);
+            return _webElementImplementation = WebDriverFactory.Driver.FindElements(@by).FirstOrDefault();
         }
+
+        private bool IsPresent => WebDriverFactory.Driver.FindElements(_by).Count > 0;
 
         private bool IsExists(int timeout, bool shouldExists) => IsExists(TimeSpan.FromSeconds(timeout), shouldExists);
 
