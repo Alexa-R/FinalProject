@@ -143,7 +143,7 @@ namespace FinalProject.WrapperElement
 
         public Size Size => WaitHelper.GetExplicitWait().Until(d => WebElementImplementation.Size);
         
-        public bool Displayed
+        public bool Displayed 
         {
             get
             { 
@@ -151,7 +151,7 @@ namespace FinalProject.WrapperElement
                 {
                     WaitForElementIsDisplayed();
 
-                    return WebElementImplementation.Displayed;
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -167,7 +167,17 @@ namespace FinalProject.WrapperElement
 
         public void WaitForElementIsDisplayed(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), exceptionTypes: new[] { typeof(NoSuchElementException) })
-                .Until(d => WebElementImplementation.Displayed);
+                .Until(d =>
+                {
+                    try
+                    {
+                        return WebElementImplementation.Displayed;
+                    }
+                    catch(Exception)
+                    {
+                        return false;
+                    }
+                });
 
         public void WaitForElementIsStale(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
