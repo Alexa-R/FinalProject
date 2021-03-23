@@ -5,6 +5,7 @@ using System.Linq;
 using FinalProject.Helpers;
 using FinalProject.WrapperFactory;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace FinalProject.WrapperElement
@@ -107,7 +108,6 @@ namespace FinalProject.WrapperElement
 
                     return false;
                 }
-
             });
 
         public string GetAttribute(string attributeName) => WaitHelper.GetExplicitWait()
@@ -160,7 +160,13 @@ namespace FinalProject.WrapperElement
                 }
             }
         }
-        
+
+        public void MoveToElement()
+        {
+            Actions builder = new Actions(WebDriverFactory.Driver);
+            builder.MoveToElement(WebElementImplementation).Build().Perform();
+        }
+
         public void WaitForElementDisappear(int? timeout = null) =>
             WaitForElementExistence(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), DefaultPollingInterval, false);
 
