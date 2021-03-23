@@ -174,6 +174,10 @@ namespace FinalProject.WrapperElement
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), exceptionTypes: new[] { typeof(NoSuchElementException) })
                 .Until(d => IsPresent && WebElementImplementation.Displayed);
 
+        public void WaitForElementIsNotDisplayed(int? timeout = null) =>
+            WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout), exceptionTypes: new[] { typeof(NoSuchElementException) })
+                .Until(d => IsPresent && !WebElementImplementation.Displayed);
+
         public void WaitForElementIsStale(int? timeout = null) =>
             WaitHelper.GetExplicitWait(timeout == null ? Timeout : TimeSpan.FromMilliseconds((int)timeout))
                 .Until(ExpectedConditions.StalenessOf(WebElementImplementation));
