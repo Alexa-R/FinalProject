@@ -11,7 +11,6 @@ namespace FinalProject.PageObjects
     public class CheckoutPage : BasePage
     {
         private WrapperWebElement PaymentMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]"));
-        private WrapperWebElement PaymentMethodDropdownList => new WrapperWebElement(By.XPath("//g-fancy-dropdown[.//*[contains(text(),'Payment Method')]]//ul"));
         private WrapperWebElement ShippingMethodDropdownMenu => new WrapperWebElement(By.XPath("//g-fancy-select[contains(@params,'ShippingMethod')]//button"));
         private WrapperWebElement PoNumberInputField => new WrapperWebElement(By.XPath("//*[@id='poNumber']"));
         private WrapperWebElement PlaceOrderButton => new WrapperWebElement(By.XPath("//*[@aria-label='Place Order']"));
@@ -36,17 +35,11 @@ namespace FinalProject.PageObjects
         private WrapperWebElement RecurringOrderCancelButton => new WrapperWebElement(By.XPath("//*[@id='recurring-order']//*[@data-dismiss='modal']"));
         private WrapperWebElement CartSummaryTotalItemsText => new WrapperWebElement(By.XPath("//*[@class='cart-summary__total-items-text']"));
         private WrapperWebElement CartSummaryTotalQuantityText => new WrapperWebElement(By.XPath("//*[@class='cart-summary__total-qty-text']"));
-        private WrapperWebElement EstimatedTotalOrderSummaryValue => new WrapperWebElement(By.XPath("//*[@class='cart-summary__value-row'][.//*[text()='Estimated Total']]//g-price"));
-
+       
         public void ClickPaymentMethodDropdownMenu()
         {
             LogHelper.Info("Clicking on the Payment Method Dropdown Menu");
             PaymentMethodDropdownMenu.Click();
-
-            if (PaymentMethodDropdownList.Displayed == false)
-            {
-                PaymentMethodDropdownMenu.Click();
-            }
         }
 
         public void ClickPaymentMethodFromPaymentMethodDropdown(string paymentMethodName)
@@ -83,23 +76,14 @@ namespace FinalProject.PageObjects
         public void ClickChangeShippingAddressLink()
         {
             LogHelper.Info("Clicking on the Change Shipping Address Link");
+            
             ChangeShippingAddressLink.Click();
-
-            if (AddNewAddressButton.Displayed == false)
-            {
-                ChangeShippingAddressLink.Click();
-            }
         }
 
         public void ClickAddNewAddressButton()
         {
             LogHelper.Info("Clicking on the Add New Address Button");
             AddNewAddressButton.Click();
-
-            if (NicknameInputField.Displayed == false)
-            {
-                AddNewAddressButton.Click();
-            }
         }
 
         public void EnterNickname(string nickname)
@@ -291,12 +275,6 @@ namespace FinalProject.PageObjects
             return new WrapperWebElement(By.XPath($"//*[@class='cart-summary__value-row'][.//*[text()='{valueName}']]//g-price")).Displayed;
         }
 
-        public void WaitUntilOrderSummaryIsLoaded()
-        {
-            LogHelper.Info("Loading of the Order Summary");
-            EstimatedTotalOrderSummaryValue.WaitForInvisibilityOfElementWithText(EstimatedTotalOrderSummaryValue.Text);
-        }
-
         public void ClickAddressRadioButton(string nickname)
         {
             LogHelper.Info("Clicking on the Address Radio Button");
@@ -316,7 +294,9 @@ namespace FinalProject.PageObjects
             EnterCity(ConfigurationManager.AppSettings["City"]);
             EnterZipCode(ConfigurationManager.AppSettings["PostalCode"]);
             ClickSaveButton();
+            WaitUntilPageIsLoaded();
             ClickAddressRadioButton(nickname);
+            WaitUntilPageIsLoaded();
         }
     }
 }
