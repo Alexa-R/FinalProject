@@ -19,6 +19,7 @@ namespace FinalProject.PageObjects
         private WrapperWebElement SearchInputField => new WrapperWebElement(By.XPath("//input[@type='search']"));
         private WrapperWebElement SearchResultPopup => new WrapperWebElement(By.XPath("//*[@class='typeahead-search__results-view']"));
         private WrapperWebElement Spinner => new WrapperWebElement(By.XPath("//*[@id='cc-spinner']"));
+        private WrapperWebElement AddToCartAlert => new WrapperWebElement(By.XPath("//*[@id='CC-messages']"));
 
         public void ClickLoginButton()
         {
@@ -78,7 +79,6 @@ namespace FinalProject.PageObjects
         public void ClickBagButton()
         {
             LogHelper.Info("Clicking on the Bag Button");
-            BagButton.MoveToElement();
             BagButton.Click();
         }
 
@@ -98,6 +98,7 @@ namespace FinalProject.PageObjects
         {
             LogHelper.Info("Clicking on the Checkout Button");
             CheckoutButton.Click();
+            WaitUntilPageIsLoaded();
         }
 
         public void ClickViewBagButton()
@@ -152,6 +153,12 @@ namespace FinalProject.PageObjects
                 Pages.BasePage.ClickUserMenuButton();
                 Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
             }
+        }
+
+        public void WaitUntilAddToCartAlertIsNotDisplayed()
+        {
+            LogHelper.Info("Waiting for the Add To Cart Alert not display");
+            AddToCartAlert.WaitForElementIsNotDisplayed();
         }
     }
 }
