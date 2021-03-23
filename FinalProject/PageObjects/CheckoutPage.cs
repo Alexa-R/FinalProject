@@ -172,23 +172,21 @@ namespace FinalProject.PageObjects
         public bool IsOrderConfirmationContainerDisplayed()
         {
             LogHelper.Info("Checking the display of the Order Confirmation Container");
+            OrderConfirmationContainer.WaitForElementIsDisplayed();
             return OrderConfirmationContainer.Displayed;
         }
 
         public void ClickMakeRecurringOrderButton()
         {
             LogHelper.Info("Clicking on the Make Recurring Order Button");
+            MakeRecurringOrderButton.MoveToElement();
             MakeRecurringOrderButton.Click();
-
-            if (RecurringOrderModal.Displayed == false)
-            {
-                MakeRecurringOrderButton.Click();
-            }
         }
 
         public bool IsRecurringOrderModalDisplayed()
         {
             LogHelper.Info("Checking the display of the Recurring Order Modal");
+            RecurringOrderModal.WaitForElementIsDisplayed();
             return RecurringOrderModal.Displayed;
         }
 
@@ -277,6 +275,7 @@ namespace FinalProject.PageObjects
         public bool IsCartSummaryTotalItemsTextDisplayed()
         {
             LogHelper.Info("Checking the display of the Cart Summary Total Items");
+            CartSummaryTotalItemsText.WaitForElementIsDisplayed();
             return CartSummaryTotalItemsText.Displayed;
         }
 
