@@ -27,12 +27,8 @@ namespace FinalProject.PageObjects
         public void ClickWriteReviewButton()
         {
             LogHelper.Info("Clicking on the Write Review Button");
+            WriteReviewButton.MoveToElement();
             WriteReviewButton.Click();
-
-            if (ReviewTitleInputField.Displayed == false)
-            {
-                WriteReviewButton.Click();
-            }
         }
 
         public string GetProductHeaderText()

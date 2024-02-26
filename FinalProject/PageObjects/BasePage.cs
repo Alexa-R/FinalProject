@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using FinalProject.Constants;
+﻿using FinalProject.Constants;
 using FinalProject.Helpers;
 using FinalProject.WrapperElement;
 using OpenQA.Selenium;
@@ -18,7 +17,9 @@ namespace FinalProject.PageObjects
         private WrapperWebElement ViewBagButton => new WrapperWebElement(By.XPath("//*[@class='minicart-popup__links']//a[contains(@href,'cart')]"));
         private WrapperWebElement ShopMenuLink => new WrapperWebElement(By.XPath("//*[@id='headerBar']//a[text()='Shop']"));
         private WrapperWebElement SearchInputField => new WrapperWebElement(By.XPath("//input[@type='search']"));
+        private WrapperWebElement SearchResultPopup => new WrapperWebElement(By.XPath("//*[@class='typeahead-search__results-view']"));
         private WrapperWebElement Spinner => new WrapperWebElement(By.XPath("//*[@id='cc-spinner']"));
+        private WrapperWebElement AddToCartAlert => new WrapperWebElement(By.XPath("//*[@id='CC-messages']"));
 
         public void ClickLoginButton()
         {
@@ -29,6 +30,7 @@ namespace FinalProject.PageObjects
         public bool IsLoginButtonDisplayed()
         {
             LogHelper.Info("Checking on the display of the Login Button");
+            LoginButton.WaitForElementIsDisplayed();
             return LoginButton.Displayed;
         }
 
@@ -78,11 +80,6 @@ namespace FinalProject.PageObjects
         {
             LogHelper.Info("Clicking on the Bag Button");
             BagButton.Click();
-
-            if (CheckoutButton.Displayed == false)
-            {
-                BagButton.Click();
-            }
         }
 
         public bool IsBagButtonDisplayed()
@@ -101,6 +98,7 @@ namespace FinalProject.PageObjects
         {
             LogHelper.Info("Clicking on the Checkout Button");
             CheckoutButton.Click();
+            WaitUntilPageIsLoaded();
         }
 
         public void ClickViewBagButton()
@@ -125,6 +123,7 @@ namespace FinalProject.PageObjects
         {
             LogHelper.Info($"Searching for '{item}' in search input field");
             SearchInputField.SendKeys(item);
+            SearchResultPopup.WaitForElementIsDisplayed();
             SearchInputField.SendKeys(Keys.Enter);
         }
 
@@ -154,6 +153,12 @@ namespace FinalProject.PageObjects
                 Pages.BasePage.ClickUserMenuButton();
                 Pages.BasePage.ClickLinkInUserPopupMenu(UserPopupMenuLinksNamesConstants.Logout);
             }
+        }
+
+        public void WaitUntilAddToCartAlertIsNotDisplayed()
+        {
+            LogHelper.Info("Waiting for the Add To Cart Alert not display");
+            AddToCartAlert.WaitForElementIsNotDisplayed();
         }
     }
 }

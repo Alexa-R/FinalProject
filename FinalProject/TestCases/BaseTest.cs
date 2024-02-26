@@ -22,6 +22,7 @@ namespace FinalProject.TestCases
             LogHelper.Info($"Browser navigated to the url [{ConfigurationManager.AppSettings["URL"]}].");
             WebDriverFactory.Driver.Manage().Window.Maximize();
             LogHelper.Info("Browser maximized.");
+            WebDriverFactory.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
         }
 
         [TearDown]

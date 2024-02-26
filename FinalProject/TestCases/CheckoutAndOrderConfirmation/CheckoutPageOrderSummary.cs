@@ -29,6 +29,7 @@ namespace FinalProject.TestCases.CheckoutAndOrderConfirmation
             Pages.BasePage.CheckUserLoggedIn();
             Pages.BasePage.LogIn(ConfigurationManager.AppSettings["Login"], ConfigurationManager.AppSettings["Password"]);
             Pages.HomePage.AddItemToCart();
+            Pages.BasePage.WaitUntilAddToCartAlertIsNotDisplayed();
             Pages.BasePage.ClickBagButton();
             Pages.BasePage.ClickCheckoutButton();
             Pages.CheckoutPage.ClickChangeShippingAddressLink();
